@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe, ChevronDown, MapPin, Phone, Clock } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown, MapPin, Phone, Clock, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TRANSLATIONS } from '../utils/translations';
 
@@ -73,6 +73,10 @@ export default function Header({ activeSection, onNavClick, lang, setLang, curre
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1.5 text-emerald-400">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span className="font-bold text-emerald-400">DP Min. Rp 50.000 (Tanda Jadi Official)</span>
+            </div>
             <div className="flex items-center gap-1.5 text-orange-400">
               <Clock className="w-3.5 h-3.5 text-orange-500 shrink-0" />
               <span className="font-semibold">{t.topbar_service}</span>

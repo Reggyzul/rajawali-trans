@@ -74,6 +74,12 @@ export default function Services({ lang }: ServicesProps) {
           <p className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
             Tarif hemat & transparan untuk travel penumpang reguler PP Kefa - Kupang maupun sewa carter privat.
           </p>
+
+          {/* Highlight DP Banner */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold shadow-xs mt-2">
+            <Shield className="w-4 h-4 text-emerald-600 shrink-0 fill-emerald-100" />
+            <span>DP Minimal Rp 50.000 (Tanda Jadi Garansi Tempat Duduk & Armada)</span>
+          </div>
         </div>
 
         {/* 3 Routes Grid Cards */}
@@ -107,9 +113,12 @@ export default function Services({ lang }: ServicesProps) {
                 </div>
 
                 {/* Tariff Callout Box */}
-                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
-                  <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">Tarif Keberangkatan</span>
-                  <div className="flex items-baseline gap-1 mt-0.5">
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">Tarif Keberangkatan</span>
+                    <span className="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">DP Min. Rp 50rb</span>
+                  </div>
+                  <div className="flex items-baseline gap-1">
                     <span className="font-display font-black text-2xl text-orange-600">{item.price}</span>
                     <span className="text-xs font-bold text-slate-600">{item.unitPrice}</span>
                   </div>

@@ -42,7 +42,16 @@ export default function Hero({ onRentClick, onVisiMisiClick, lang }: HeroProps) 
         
         <div className="space-y-6 flex flex-col items-center" id="hero-text-container">
           
-
+          {/* Top DP Highlight Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 font-sans font-extrabold text-xs tracking-wide shadow-xs"
+          >
+            <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 fill-emerald-100" />
+            <span>DP MINIMAL RP 50.000 (TANDA JADI PEMESANAN)</span>
+          </motion.div>
 
           {/* Main Headline */}
           <motion.h1 

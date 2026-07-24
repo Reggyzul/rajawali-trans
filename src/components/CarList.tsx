@@ -67,6 +67,9 @@ export default function CarList({ onSelectCar, lang }: CarListProps) {
                   <div className="absolute top-3 left-3 bg-orange-50 text-orange-700 border border-orange-200 font-display font-bold text-[10px] uppercase px-2.5 py-1 rounded-full shadow-sm">
                     {car.category}
                   </div>
+                  <div className="absolute top-3 right-3 bg-emerald-50 text-emerald-800 border border-emerald-200 font-display font-extrabold text-[10px] uppercase px-2.5 py-1 rounded-full shadow-sm">
+                    DP Min. Rp 50rb
+                  </div>
                   <div className="absolute bottom-3 right-3 bg-white/95 text-slate-700 font-sans text-[10px] font-bold px-2.5 py-1 rounded-full border border-slate-200 flex items-center gap-1.5 shadow-sm">
                     <Users className="w-3.5 h-3.5 text-orange-600" />
                     <span>{car.seats} Kursi</span>
