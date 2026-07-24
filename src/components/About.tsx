@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { UserCheck, Clock, ShieldCheck, Tag, Sparkles, MessageSquare } from 'lucide-react';
+import React from 'react';
+import { motion } from 'motion/react';
+import { ShieldCheck, Sparkles, CheckCircle2, Compass, Award, HeartHandshake, Quote } from 'lucide-react';
 import { TRANSLATIONS } from '../utils/translations';
 
 interface AboutProps {
@@ -8,173 +8,111 @@ interface AboutProps {
 }
 
 export default function About({ lang }: AboutProps) {
-  const [showFullStory, setShowFullStory] = useState(false);
   const t = TRANSLATIONS[lang];
 
-  const keyStrengths = [
-    {
-      icon: <ShieldCheck className="w-5 h-5 text-luxury-gold" />,
-      title: t.strength_clean_title,
-      description: t.strength_clean_desc
-    },
-    {
-      icon: <UserCheck className="w-5 h-5 text-luxury-gold" />,
-      title: t.strength_driver_title,
-      description: t.strength_driver_desc
-    },
-    {
-      icon: <Tag className="w-5 h-5 text-luxury-gold" />,
-      title: t.strength_price_title,
-      description: t.strength_price_desc
-    },
-    {
-      icon: <Clock className="w-5 h-5 text-luxury-gold" />,
-      title: t.strength_time_title,
-      description: t.strength_time_desc
-    }
-  ];
-
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          {/* About Left: The Artistic Card */}
-          <div className="lg:col-span-5 relative" id="about-image-card">
-            <div className="relative p-6 bg-luxury-charcoal rounded-[40px] shadow-2xl overflow-hidden group">
-              
-              {/* Card Header branding inside */}
-              <div className="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
-                <p className="text-[10px] font-display font-medium tracking-[0.2em] text-gray-400">
-                  {t.about_card_tag}
-                </p>
-                <div className="flex flex-col items-end">
-                  <span className="font-display font-bold text-xs tracking-tight text-luxury-gold">
-                    YOGA TRANSPORT
-                  </span>
-                  <span className="text-[7px] text-gray-400 tracking-wider">MALANG - EAST JAVA</span>
-                </div>
-              </div>
+    <section id="about" className="py-20 sm:py-24 bg-gradient-to-b from-white via-slate-50 to-white text-[#0f172a] overflow-hidden relative border-b border-slate-200">
+      
+      {/* Background Subtle Soft Radial Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-orange-400/5 rounded-full blur-3xl pointer-events-none" />
 
-              {/* Central Premium vehicle image inside frame */}
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg mb-6 border border-white/5 bg-black/20">
-                <img
-                  src="/elf_long.png"
-                  alt="Isuzu Elf Long Yoga Transport Malang"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-luxury-gold/90 text-white font-display font-bold text-[10px] px-2.5 py-1 rounded">
-                  <Sparkles className="w-3 h-3" />
-                  <span>{t.about_badge}</span>
-                </div>
-              </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Heading Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3.5" id="about-heading">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-orange-600 font-display font-extrabold text-xs tracking-widest uppercase shadow-sm"
+          >
+            <Compass className="w-4 h-4 text-orange-600" />
+            <span>VISI & MISI PO. RAJAWALI TRANS</span>
+          </motion.div>
 
-              {/* Gold Accented Callout Text inside frame */}
-              <div className="space-y-3">
-                <div className="flex items-baseline justify-between">
-                  <h4 className="font-display font-bold text-base text-white tracking-tight uppercase leading-snug">
-                    {lang === 'EN' ? (
-                      <>
-                        BEST TRAVEL <br />
-                        <span className="text-luxury-gold">EXPERIENCE</span> IN JAVA
-                      </>
-                    ) : (
-                      <>
-                        PENGALAMAN TRAVEL <br />
-                        TERBAIK DI <span className="text-luxury-gold">JAWA TIMUR</span>
-                      </>
-                    )}
-                  </h4>
-                  <div className="text-right">
-                    <span className="block font-display font-black text-3xl text-luxury-gold leading-none">4.9</span>
-                    <span className="text-[8px] text-gray-400">{t.about_card_rating_label}</span>
-                  </div>
-                </div>
-                <p className="text-[11px] text-gray-400 leading-relaxed font-sans">
-                  {lang === 'EN' 
-                    ? 'Enjoy the beauty of Malang Batu Bromo without driving stress. Leave your journey to the local experts!' 
-                    : 'Nikmati indahnya alam Malang, Batu, dan Bromo tanpa lelah menyetir. Serahkan perjalanan Anda kepada tim ahli kami!'}
-                </p>
-              </div>
-
-              {/* Decorative design nodes in frame */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-luxury-gold/5 rounded-full blur-xl pointer-events-none" />
-              <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-luxury-gold/10 rounded-full blur-xl pointer-events-none" />
-            </div>
-          </div>
-
-          {/* About Right: The Content */}
-          <div className="lg:col-span-7 space-y-6 flex flex-col justify-center animate-fade-in" id="about-content">
-            
-            <div className="space-y-2">
-              <span className="font-display font-bold text-sm text-luxury-gold tracking-widest uppercase">
-                {t.about_tag}
-              </span>
-              <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-gray-900 tracking-tight leading-none uppercase">
-                {t.about_title_1} <br />
-                <span className="text-luxury-gold">{t.about_title_2}</span>
-              </h2>
-            </div>
-
-            <div className="space-y-4 font-sans text-gray-600 leading-relaxed text-sm sm:text-base">
-              <p>
-                {t.about_desc_1}
-              </p>
-              <p>
-                {t.about_desc_2}
-              </p>
-            </div>
-
-            {/* Read More Accordion showing strengths details */}
-            <AnimatePresence>
-              {showFullStory && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="space-y-4 pt-4 border-t border-gray-100"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                    {keyStrengths.map((strength, idx) => (
-                      <div key={idx} className="bg-amber-50/20 p-4 rounded-2xl border border-amber-100/30">
-                        <div className="mb-2">{strength.icon}</div>
-                        <h4 className="font-display font-bold text-sm text-gray-900 mb-1">{strength.title}</h4>
-                        <p className="font-sans text-xs text-gray-500 leading-relaxed">{strength.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Buttons Row */}
-            <div className="flex items-center gap-4 pt-4">
-              <button
-                onClick={() => setShowFullStory(!showFullStory)}
-                className="bg-luxury-gold hover:bg-luxury-gold-dark text-white font-display font-bold text-sm px-6 py-3.5 rounded-full shadow-md transition-colors cursor-pointer"
-                id="about-readmore-btn"
-              >
-                {showFullStory ? t.about_read_less : t.about_read_more}
-              </button>
-              
-              <button
-                onClick={() => {
-                  const target = document.getElementById('contact');
-                  if (target) target.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="border border-gray-200 hover:bg-gray-50 text-gray-700 hover:text-luxury-gold p-3 rounded-full transition-all cursor-pointer"
-                title="Hubungi Kami"
-                id="about-contact-icon-btn"
-              >
-                <MessageSquare className="w-5 h-5" />
-              </button>
-            </div>
-
-          </div>
-
+          <motion.h2 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#0f172a] tracking-tight uppercase leading-tight"
+          >
+            Komitmen Pelayanan <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500">Terpercaya & Berkualitas</span>
+          </motion.h2>
         </div>
+
+        {/* ULTRA-PRECISE PROFESSIONAL SINGLE COLUMN CARD */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-slate-200/60 relative overflow-hidden space-y-8"
+        >
+          {/* Subtle Top Right Decorative Accent */}
+          <div className="absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl from-orange-400/10 via-transparent to-transparent rounded-bl-full pointer-events-none" />
+
+          {/* Header Badge & Quote Icon Row */}
+          <div className="flex items-center justify-between border-b border-slate-100 pb-5">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 shadow-sm">
+                <Award className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="font-display font-black text-base text-[#0f172a] uppercase tracking-tight block">
+                  STANDAR OPERASIONAL UTAMA
+                </span>
+                <span className="text-[11px] font-bold text-orange-600 uppercase tracking-wider block mt-0.5">
+                  Kupang & Wilayah Sekitarnya
+                </span>
+              </div>
+            </div>
+
+            <Quote className="w-8 h-8 text-orange-200 shrink-0 hidden sm:block" />
+          </div>
+
+          {/* Core Visi & Misi Statement Box with High Precision Typography */}
+          <div className="bg-gradient-to-br from-orange-50/50 via-slate-50/80 to-white border-l-4 border-orange-500 p-6 sm:p-8 rounded-r-2xl border-y border-r border-slate-200/80 shadow-inner relative">
+            <p className="font-sans text-base sm:text-[17px] text-slate-800 leading-[1.8] font-medium tracking-normal text-justify sm:text-left">
+              "Sebagai penyedia layanan rental mobil terpercaya di Kupang dan sekitarnya, kami menghadirkan armada yang terawat, pelayanan profesional, dan standar operasional yang mengutamakan keamanan, kenyamanan, serta kepuasan pelanggan. Setiap perjalanan didukung oleh layanan yang andal, efisien, dan berorientasi pada kualitas."
+            </p>
+          </div>
+
+          {/* 3 Precise Pillar Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors">
+              <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 shrink-0 mt-0.5 shadow-xs">
+                <ShieldCheck className="w-4.5 h-4.5" />
+              </div>
+              <div>
+                <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0f172a] block">Armada Terawat</span>
+                <span className="text-[11px] text-slate-600 font-medium block mt-0.5 leading-snug">Unit bersih, steril & selalu prima</span>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors">
+              <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 shrink-0 mt-0.5 shadow-xs">
+                <HeartHandshake className="w-4.5 h-4.5" />
+              </div>
+              <div>
+                <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0f172a] block">Pelayanan Profesional</span>
+                <span className="text-[11px] text-slate-600 font-medium block mt-0.5 leading-snug">Driver ramah & berpengalaman</span>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors">
+              <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 shrink-0 mt-0.5 shadow-xs">
+                <Sparkles className="w-4.5 h-4.5" />
+              </div>
+              <div>
+                <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0f172a] block">Berorientasi Kualitas</span>
+                <span className="text-[11px] text-slate-600 font-medium block mt-0.5 leading-snug">Perjalanan aman & efisien</span>
+              </div>
+            </div>
+
+          </div>
+
+        </motion.div>
+
       </div>
     </section>
   );

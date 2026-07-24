@@ -68,60 +68,54 @@ export default function BookingModal({ car, onClose, lang, onCarChange }: Bookin
     }
 
     // Compose professional WhatsApp template
-    const waNumber = '628813305066';
+    const waNumber = '6281236313554';
     const inclusionText = includeTolParkir 
-      ? (lang === 'EN' ? t.modal_allin_active : 'Ya (All-In Tol, Parkir, Makan Driver)')
-      : (lang === 'EN' ? t.modal_allin_inactive : 'Tidak (Mobil + Driver saja)');
+      ? 'Perjalanan Carter Privat (Rp 650.000)'
+      : 'Travel Reguler (Rp 125.000 / orang)';
 
     let textTemplate = '';
     if (lang === 'EN') {
-      textTemplate = `Hello Yoga Transport, I would like to book the following vehicle:
+      textTemplate = `Hello Rajawali Trans, I would like to book a ticket/charter for Kefa - Kupang:
 
-*VEHICLE MODEL:*
+*SERVICE MODEL:*
 👉 *${car.name}*
 
 *SCHEDULE DETAILS:*
-🗓 Start Date: ${startDate}
+🗓 Departure Date: ${startDate}
 ⏰ Pickup Time: ${pickupTime}
-⏳ Rental Duration: ${duration} Day(s)
+⏳ Passengers / Duration: ${duration}
 
-*CUSTOMER & PICKUP DETAILS:*
+*CUSTOMER DETAILS:*
 👤 Name: ${name}
 📞 WhatsApp Number: ${phone}
-📍 Pickup Address: ${pickupAddress}
-📝 Special Notes: ${notes || '-'}
+📍 Pickup & Destination: ${pickupAddress}
+📝 Luggage / Notes: ${notes || '-'}
 
-*EXTRA SERVICES:*
-🅿️ All-In Package (Tolls, Parking, Driver Meal): ${inclusionText}
+*SERVICE TYPE:*
+🚌 Type: ${inclusionText}
 
-*ESTIMATED COST:*
-💰 Price: Contact for best quote
-
-Please confirm availability. Thank you!`;
+Thank you!`;
     } else {
-      textTemplate = `Halo Yoga Transport, saya ingin memesan armada berikut:
+      textTemplate = `Halo Rajawali Trans, saya ingin memesan tiket travel / carter rute Kefa - Kupang:
 
-*MODEL ARMADA:*
+*ARMADA MOBIL:*
 👉 *${car.name}*
 
 *JADWAL PERJALANAN:*
-🗓 Tanggal Jemput: ${startDate}
-⏰ Jam Jemput: ${pickupTime}
-⏳ Durasi Sewa: ${duration} Hari
+🗓 Tanggal Keberangkatan: ${startDate}
+⏰ Jam Penjemputan: ${pickupTime}
+⏳ Jumlah Penumpang: ${duration} Orang
 
-*DATA PELANGGAN & PENJEMPUTAN:*
+*DATA PEMESAN:*
 👤 Nama: ${name}
 📞 No. WhatsApp: ${phone}
-📍 Alamat Jemput: ${pickupAddress}
-📝 Catatan Khusus: ${notes || '-'}
+📍 Alamat Jemput & Tujuan: ${pickupAddress}
+📝 Catatan / Barang Bawaan: ${notes || '-'}
 
-*LAYANAN TAMBAHAN:*
-🅿️ Paket All-In (BBM, Tol, Parkir, Makan Driver): ${inclusionText}
+*JENIS LAYANAN:*
+🚌 Jenis: ${inclusionText}
 
-*ESTIMASI BIAYA:*
-💰 Tarif: Hubungi kontak kami untuk penawaran terbaik
-
-Mohon konfirmasi ketersediaan unit. Terima kasih!`;
+Mohon konfirmasi ketersediaan tempat. Terima kasih!`;
     }
 
     const encodedText = encodeURIComponent(textTemplate);
@@ -157,7 +151,7 @@ Mohon konfirmasi ketersediaan unit. Terima kasih!`;
             <div className="space-y-6">
               <div className="flex items-center gap-2 text-luxury-gold">
                 <Sparkles className="w-4 h-4 animate-pulse" />
-                <span className="font-display font-semibold text-xs tracking-widest uppercase">YOGA TRANSPORT</span>
+                <span className="font-display font-semibold text-xs tracking-widest uppercase">RENTAL DIEGO KUPANG</span>
               </div>
               
               <div className="space-y-2">

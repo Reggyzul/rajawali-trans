@@ -27,25 +27,27 @@ export default function ToursList({ lang }: ToursListProps) {
       id: 'tour-city',
       title: lang === 'EN' ? 'City Tour Malang & Batu' : 'City Tour Malang & Batu',
       duration: lang === 'EN' ? '1 Day Tour' : '1 Hari Penuh (1 Day)',
-      location: 'Malang & Batu',
-      price: 'Mulai Rp 1.500.000',
-      description: lang === 'EN'
-        ? 'Flexible private city tour guide around Batu city, theme parks (Jatim Park), and local Malang culinary spots.'
-        : 'Panduan wisata kota fleksibel keliling kota Batu, theme park (Jatim Park), dan wisata kuliner Malang.',
-      image: 'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&q=80&w=600',
-      waMessage: 'Halo Yoga Transport, saya tertarik memesan paket City Tour Malang & Batu. Mohon info ketersediaannya.'
+      waMessage: 'Halo Rental Diego Kupang, saya tertarik memesan paket wisata Kupang & Timor. Mohon info detailnya.'
     },
     {
-      id: 'tour-shuttle',
-      title: lang === 'EN' ? 'Shuttle & Drop Juanda Airport' : 'Shuttle & Drop Bandara Juanda',
-      duration: lang === 'EN' ? 'One Way' : 'Sekali Jalan',
-      location: 'Surabaya / Malang',
-      price: 'Mulai Rp 750.000',
-      description: lang === 'EN'
-        ? 'Punctual private pickup or drop off shuttle service from Malang to Surabaya Juanda Airport.'
-        : 'Layanan antar-jemput privat tepat waktu dari Malang ke Bandara Juanda Surabaya atau sebaliknya.',
-      image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=600',
-      waMessage: 'Halo Yoga Transport, saya ingin memesan layanan Drop Bandara Juanda. Mohon konfirmasi tarifnya.'
+      id: 'tour-2',
+      title: 'City Tour Kupang',
+      subtitle: 'Pantai Lasiana, Gua Kristal, & Pusat Kuliner',
+      price: 'Mulai 700rb-an',
+      duration: '1 Hari Full (Flexible)',
+      image: 'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&q=80&w=600',
+      highlights: ['Pantai Lasiana', 'Gua Kristal', 'Pusat Souvenir Tenun', 'Kuliner Ikan Bakar'],
+      waMessage: 'Halo Rental Diego Kupang, saya tertarik memesan paket City Tour Kupang. Mohon info ketersediaannya.'
+    },
+    {
+      id: 'tour-3',
+      title: 'Shuttle & Drop Bandara El Tari',
+      subtitle: 'Antar Jemput Bandara & Pelabuhan Tenau',
+      price: 'Mulai 250rb-an',
+      duration: 'Sesuai Jam Penerbangan',
+      image: 'https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&q=80&w=600',
+      highlights: ['Tepat Waktu', 'Bantu Angkat Bagasi', 'Driver Ramah', 'Armada AC Steril'],
+      waMessage: 'Halo Rental Diego Kupang, saya ingin memesan layanan Drop Bandara El Tari Kupang. Mohon konfirmasi tarifnya.'
     }
   ];
 

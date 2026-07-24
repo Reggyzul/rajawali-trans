@@ -1,27 +1,22 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import CarList from './components/CarList';
 import Services from './components/Services';
 import ToursList from './components/ToursList';
-import CarList from './components/CarList';
 import BookingSteps from './components/BookingSteps';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
 import { Car } from './types';
 import { CARS } from './data/cars';
-import { ChevronUp } from 'lucide-react';
+import { ChevronUp, MessageSquareCode } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TRANSLATIONS } from './utils/translations';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'tours' | 'rentals'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'tours' | 'rentals'>('home');
   const [activeSection, setActiveSection] = useState('home');
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -41,7 +36,7 @@ export default function App() {
 
       // Track active section on home page
       if (currentPage === 'home') {
-        const sections = ['home', 'about', 'services', 'steps', 'contact'];
+        const sections = ['home', 'cars', 'services', 'steps', 'contact'];
         const scrollPosition = window.scrollY + 250; // Offset
 
         for (const section of sections) {
@@ -67,6 +62,10 @@ export default function App() {
       setCurrentPage('home');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setActiveSection('home');
+    } else if (sectionId === 'about') {
+      setCurrentPage('about');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setActiveSection('about');
     } else if (sectionId === 'tours') {
       setCurrentPage('tours');
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -76,10 +75,18 @@ export default function App() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setActiveSection('rentals');
     } else {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        setActiveSection(sectionId);
+      if (currentPage !== 'home') {
+        setCurrentPage('home');
+        setTimeout(() => {
+          const el = document.getElementById(sectionId);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          setActiveSection(sectionId);
+        }
       }
     }
   };
@@ -94,18 +101,18 @@ export default function App() {
 
   // WhatsApp template for fast-chat floater
   const handleFastWhatsApp = () => {
-    const waNumber = '628813305066';
+    const waNumber = '6281236313554';
     const text = encodeURIComponent(
       lang === 'EN' 
-        ? 'Hello Yoga Transport, I am interested in booking a service in Malang. Thank you!'
-        : 'Halo Yoga Transport, saya tertarik untuk memesan layanan perjalanan/rental di Malang. Terima kasih!'
+        ? 'Hello Rajawali Trans, I would like to book a travel ticket/charter for Kefa - Kupang. Thank you!'
+        : 'Halo Rajawali Trans, saya ingin memesan tiket travel/carter rute Kefa - Kupang. Terima kasih!'
     );
     window.open(`https://api.whatsapp.com/send?phone=${waNumber}&text=${text}`, '_blank', 'noreferrer');
   };
 
   return (
     <div 
-      className="relative min-h-screen bg-white text-gray-800 selection:bg-[#2563eb] selection:text-white font-sans" 
+      className="relative min-h-screen bg-[#f8fafc] text-gray-800 selection:bg-orange-500 selection:text-white font-sans" 
       id="main-app-container"
     >
       
@@ -125,13 +132,13 @@ export default function App() {
         
         {currentPage === 'home' ? (
           <>
-            {/* 1. Hero Section */}
-            <Hero onRentClick={() => handleNavClick('rentals')} lang={lang} />
+            {/* 1. Hero Section Banner */}
+            <Hero onRentClick={() => handleNavClick('rentals')} onVisiMisiClick={() => handleNavClick('about')} lang={lang} />
 
-            {/* 2. Section: Mengapa Memilih Kami? */}
-            <About lang={lang} />
+            {/* 2. Armada Mobil Tampil Berjejer */}
+            <CarList onSelectCar={handleSelectCar} lang={lang} />
 
-            {/* 3. Section: Layanan Utama */}
+            {/* 3. Section: Rute & Tarif (Kefa - Kupang PP & Carter) */}
             <Services lang={lang} />
 
             {/* 4. Section: Cara Pemesanan Mudah */}
@@ -140,8 +147,16 @@ export default function App() {
             {/* 5. Testimonials */}
             <Testimonials lang={lang} />
           </>
+        ) : currentPage === 'about' ? (
+          <div className="pt-32 sm:pt-36">
+            {/* Dedicated Standalone Visi & Misi Page */}
+            <About lang={lang} />
+            
+            {/* Testimonials */}
+            <Testimonials lang={lang} />
+          </div>
         ) : currentPage === 'tours' ? (
-          <div className="pt-44 sm:pt-48">
+          <div className="pt-32 sm:pt-36">
             {/* Tours View */}
             <ToursList lang={lang} />
             
@@ -149,7 +164,7 @@ export default function App() {
             <Testimonials lang={lang} />
           </div>
         ) : (
-          <div className="pt-44 sm:pt-48">
+          <div className="pt-32 sm:pt-36">
             {/* Rentals View */}
             <CarList onSelectCar={handleSelectCar} lang={lang} />
             
@@ -166,44 +181,33 @@ export default function App() {
       {/* Interactive Booking Popup */}
       <BookingModal car={selectedCar} onClose={() => setSelectedCar(null)} lang={lang} onCarChange={setSelectedCar} />
 
-      {/* Sticky Fast-Action Sidebar on Far Right of Screen */}
-      <div 
-        className="fixed bottom-8 right-6 z-40 flex flex-col gap-3.5"
-        id="screen-action-sidebar"
-      >
-        {/* 1. Official WhatsApp Fast Floater (Green) */}
+      {/* Floating Action Buttons */}
+      <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+        {/* WhatsApp Fast Button */}
         <motion.button
-          whileHover={{ scale: 1.08 }}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
           onClick={handleFastWhatsApp}
-          className="w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-xl cursor-pointer transition-colors border border-white/10 group relative"
-          title={t.float_whatsapp_title}
-          id="floater-whatsapp"
+          className="w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all border-2 border-white"
+          title="Chat WhatsApp Admin 081236313554"
+          id="floater-wa"
         >
-          <svg className="w-6 h-6 fill-current shrink-0" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-          </svg>
-          <span className="absolute right-14 bg-luxury-black/95 text-white font-display font-bold text-[9px] px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md border border-white/5 uppercase tracking-wider">
-            {t.float_whatsapp_title}
-          </span>
+          <MessageSquareCode className="w-7 h-7" />
         </motion.button>
 
-        {/* 3. Back to Top Floater (Blue) */}
+        {/* Scroll To Top */}
         <AnimatePresence>
           {showScrollTop && (
             <motion.button
-              initial={{ opacity: 0, scale: 0.8, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 10 }}
-              whileHover={{ scale: 1.08 }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
               onClick={scrollToTop}
-              className="w-12 h-12 rounded-full bg-[#2563eb] hover:bg-blue-700 text-white flex items-center justify-center shadow-xl cursor-pointer transition-colors border border-white/10 group relative"
-              title={lang === 'EN' ? 'Back to Top' : 'Kembali ke Atas'}
-              id="floater-scrolltop"
+              className="w-12 h-12 bg-[#0f172a] hover:bg-slate-800 text-white rounded-full shadow-xl flex items-center justify-center cursor-pointer transition-all border border-slate-700"
+              title="Kembali ke Atas"
+              id="floater-scroll-top"
             >
-              <ChevronUp className="w-6 h-6 shrink-0" />
-              <span className="absolute right-14 bg-luxury-black/95 text-white font-display font-bold text-[9px] px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md border border-white/5 uppercase tracking-wider">
-                Scroll To Top
-              </span>
+              <ChevronUp className="w-6 h-6" />
             </motion.button>
           )}
         </AnimatePresence>
