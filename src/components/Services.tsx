@@ -19,58 +19,36 @@ export default function Services({ lang }: ServicesProps) {
   const routes = [
     {
       id: 'kefa-kupang',
-      title: 'Kefa ⇄ Kupang (PP)',
-      subtitle: 'Rute Utama Timor Barat',
-      price: 'Mulai Rp 125rb',
+      title: 'Travel Kefa ➔ Kupang',
+      subtitle: 'Perjalanan Penumpang Reguler PP',
+      price: 'Rp 125.000',
       unitPrice: '/ orang',
-      badge: 'Rute Reguler PP',
+      badge: 'Jadwal Reguler',
       badgeBg: 'bg-orange-50 text-orange-700 border-orange-200',
-      description: 'Layanan travel reguler penumpang PP Kefamenanu ke Kota Kupang dan sebaliknya. Keberangkatan setiap hari.',
-      features: ['Layanan PP (Pulang Pergi)', 'Penjemputan Door to Door', 'Armada Bersih & Ber-AC']
+      description: 'Keberangkatan reguler setiap hari dari Kefamenanu ke Kota Kupang. Driver berpengalaman, unit bersih, terawat, dan ber-AC.',
+      features: ['Keberangkatan Setiap Hari', 'Mobil Ber-AC & Steril', 'Bantu Bagasi Door to Door']
     },
     {
-      id: 'kefa-malaka',
-      title: 'Kefa ⇄ Malaka (PP)',
-      subtitle: 'Rute Kabupaten Malaka',
-      price: 'Mulai Rp 125rb',
+      id: 'kupang-kefa',
+      title: 'Travel Kupang ➔ Kefa',
+      subtitle: 'Perjalanan Penumpang Reguler PP',
+      price: 'Rp 125.000',
       unitPrice: '/ orang',
-      badge: 'Rute Reguler PP',
+      badge: 'Jadwal Reguler',
       badgeBg: 'bg-orange-50 text-orange-700 border-orange-200',
-      description: 'Layanan travel reguler penumpang PP Kefamenanu ke Kabupaten Malaka (Betun) dan sebaliknya.',
-      features: ['Layanan PP (Pulang Pergi)', 'Driver Pengalaman Rute Malaka', 'Aman, Nyaman & Tepat Waktu']
-    },
-    {
-      id: 'kefa-atambua',
-      title: 'Kefa ⇄ Atambua (PP)',
-      subtitle: 'Rute Kabupaten Belu',
-      price: 'Mulai Rp 125rb',
-      unitPrice: '/ orang',
-      badge: 'Rute Reguler PP',
-      badgeBg: 'bg-orange-50 text-orange-700 border-orange-200',
-      description: 'Layanan travel reguler penumpang PP Kefamenanu ke Kota Atambua, Belu dan sebaliknya.',
-      features: ['Layanan PP (Pulang Pergi)', 'Jalur Nyaman & Cepat', 'Kabin Luas & Steril']
-    },
-    {
-      id: 'kefa-tls',
-      title: 'Kefa ⇄ TLS / Wini (PP)',
-      subtitle: 'Rute Timor Leste & Perbatasan',
-      price: 'Mulai Rp 125rb',
-      unitPrice: '/ orang',
-      badge: 'Rute Perbatasan PP',
-      badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
-      description: 'Layanan travel reguler PP Kefamenanu ke TLS (Timor Leste / Wini / Perbatasan PLBN) dan sebaliknya.',
-      features: ['Layanan PP (Pulang Pergi)', 'Rute Khusus Perbatasan', 'Kenyamanan Utama']
+      description: 'Keberangkatan reguler dari Kota Kupang kembali ke Kefamenanu. Penjemputan tepat waktu dengan kenyamanan perjalanan terjamin.',
+      features: ['Penjemputan Tepat Waktu', 'Tempat Duduk Nyaman', 'Driver Ramah & Sopan']
     },
     {
       id: 'charter-drop',
       title: 'Carter Mobil Privat',
-      subtitle: 'Bebas Pilih Rute Mana Saja',
-      price: 'Mulai Rp 600rb',
+      subtitle: 'Perjalanan Bebas Rombongan / Keluarga',
+      price: 'Mulai Rp 600.000',
       unitPrice: '/ carter',
       badge: 'Sewa Carter Privat',
       badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-      description: 'Layanan sewa carter privat 1 mobil khusus rombongan/keluarga tanpa dicampur penumpang lain. Mulai dari Rp 600.000.',
-      features: ['Fleksibel Jam Keberangkatan', 'Bebas Rute Timor', 'Privasi & Nyaman Maksimal']
+      description: 'Layanan sewa carter privat 1 mobil khusus rombongan/keluarga tanpa dicampur penumpang lain. Fleksibel jam keberangkatan.',
+      features: ['1 Mobil Privat Khusus Rombongan', 'Bebas Atur Jam Keberangkatan', 'Door to Door Alamat Penjemputan']
     }
   ];
 
@@ -86,26 +64,26 @@ export default function Services({ lang }: ServicesProps) {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3" id="services-heading">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-600 font-display font-extrabold text-xs tracking-wider uppercase shadow-sm">
             <Route className="w-4 h-4 text-orange-600" />
-            <span>PILIHAN RUTE KEBERANGKATAN RAJAWALI TRANS</span>
+            <span>RUTE REGULER & TARIF CARTER</span>
           </div>
 
           <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#0f172a] tracking-tight uppercase leading-tight">
-            Rute Perjalanan <span className="text-orange-600">Pulang Pergi (PP)</span>
+            Tarif Resmi <span className="text-orange-600">Rajawali Trans</span>
           </h2>
 
           <p className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
-            Melayani travel penumpang reguler PP & sewa carter privat untuk rute Kefamenanu - Kupang, Malaka, Atambua, dan TLS (Timor Leste/Wini) serta sebaliknya.
+            Tarif hemat & transparan untuk travel penumpang reguler PP Kefa - Kupang maupun sewa carter privat.
           </p>
         </div>
 
-        {/* 5 Routes Responsive Grid Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 3 Routes Grid Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {routes.map((item, index) => (
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               key={item.id}
               className="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-md hover:shadow-xl hover:border-orange-300 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
             >
@@ -116,7 +94,7 @@ export default function Services({ lang }: ServicesProps) {
                   <span className={`text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border ${item.badgeBg}`}>
                     {item.badge}
                   </span>
-                  <MapPin className="w-5 h-5 text-orange-600 opacity-80" />
+                  <Car className="w-5 h-5 text-orange-600 opacity-80" />
                 </div>
 
                 <div>
