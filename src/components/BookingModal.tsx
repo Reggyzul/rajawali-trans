@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Car } from '../types';
 import { CARS } from '../data/cars';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Send, Calendar, Clock, MapPin, User, Phone, CheckCircle, Sparkles } from 'lucide-react';
+import { X, Send, Calendar, Clock, MapPin, User, Phone, CheckCircle2, ShieldCheck, CreditCard, Sparkles, Car as CarIcon, AlertCircle } from 'lucide-react';
 import { TRANSLATIONS } from '../utils/translations';
 
 interface BookingModalProps {
@@ -13,110 +13,69 @@ interface BookingModalProps {
 }
 
 export default function BookingModal({ car, onClose, lang, onCarChange }: BookingModalProps) {
+  const [serviceType, setServiceType] = useState<'kefa_kupang' | 'kupang_kefa' | 'carter'>('kefa_kupang');
+  const [selectedCarId, setSelectedCarId] = useState<string>(car?.id || 'avanza');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [pickupTime, setPickupTime] = useState('08:00');
-  const [duration, setDuration] = useState(1);
-  const [includeTolParkir, setIncludeTolParkir] = useState(false);
+  const [passengers, setPassengers] = useState('1 Orang');
+  const [departureDate, setDepartureDate] = useState('');
+  const [departureTime, setDepartureTime] = useState('08:00 (Pagi)');
   const [pickupAddress, setPickupAddress] = useState('');
+  const [destinationAddress, setDestinationAddress] = useState('');
   const [notes, setNotes] = useState('');
+  const [dpOption, setDpOption] = useState<'dp50' | 'dp100' | 'lunas'>('dp50');
   const [isBooked, setIsBooked] = useState(false);
 
   const t = TRANSLATIONS[lang];
 
-  // Reset local state when car changes
+  // Synchronize state when car prop changes
   useEffect(() => {
     if (car) {
-      setName('');
-      setPhone('');
-      setStartDate('');
-      setPickupTime('08:00');
-      setDuration(1);
-      setIncludeTolParkir(false);
-      setPickupAddress('');
-      setNotes('');
-      setIsBooked(false);
+      setSelectedCarId(car.id);
     }
   }, [car]);
 
   if (!car) return null;
 
-  // Constants
-  const ALL_IN_COST_PER_DAY = 150000; // IDR for Tol, Parkir, Makan Driver
-
-  // Calculations
-  const basePriceTotal = car.pricePerDay * duration;
-  const extrasTotal = includeTolParkir ? ALL_IN_COST_PER_DAY * duration : 0;
-  const grandTotal = basePriceTotal + extrasTotal;
-
-  // Format IDR helper
-  const formatIDR = (num: number) => {
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(num);
-  };
+  const currentSelectedCar = CARS.find(c => c.id === selectedCarId) || car;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !startDate || !pickupAddress) {
-      alert(lang === 'EN' ? 'Please complete all required fields!' : 'Mohon lengkapi semua kolom yang wajib diisi!');
+    if (!name || !phone || !departureDate || !pickupAddress) {
+      alert(lang === 'EN' ? 'Please fill in all required fields marked with *' : 'Mohon isi semua kolom yang wajib diisi (*)!');
       return;
     }
 
-    // Compose professional WhatsApp template
     const waNumber = '6281236313554';
-    const inclusionText = includeTolParkir 
-      ? 'Perjalanan Carter Privat (Rp 650.000)'
-      : 'Travel Reguler (Rp 125.000 / orang)';
 
-    let textTemplate = '';
-    if (lang === 'EN') {
-      textTemplate = `Hello Rajawali Trans, I would like to book a ticket/charter for Kefa - Kupang:
+    let serviceTitle = 'Travel Kefa ➔ Kupang (Rp 125.000/org)';
+    if (serviceType === 'kupang_kefa') serviceTitle = 'Travel Kupang ➔ Kefa (Rp 125.000/org)';
+    if (serviceType === 'carter') serviceTitle = 'Sewa Carter Privat 1 Mobil (Mulai Rp 600.000)';
 
-*SERVICE MODEL:*
-👉 *${car.name}*
+    let dpText = 'DP Minimal Rp 50.000 (Tanda Jadi Official)';
+    if (dpOption === 'dp100') dpText = 'DP Rp 100.000 (Tanda Jadi)';
+    if (dpOption === 'lunas') dpText = 'Bayar Lunas Saat Keberangkatan';
 
-*SCHEDULE DETAILS:*
-🗓 Departure Date: ${startDate}
-⏰ Pickup Time: ${pickupTime}
-⏳ Passengers / Duration: ${duration}
+    const textTemplate = `Halo Rajawali Trans, saya berminat memesan tiket travel / carter armada:
 
-*CUSTOMER DETAILS:*
-👤 Name: ${name}
-📞 WhatsApp Number: ${phone}
-📍 Pickup & Destination: ${pickupAddress}
-📝 Luggage / Notes: ${notes || '-'}
+📋 *DETAIL PEMESANAN:*
+• Jenis Perjalanan: *${serviceTitle}*
+• Unit Armada: *${currentSelectedCar.name}*
+• Tanggal Keberangkatan: *${departureDate}*
+• Jam Keberangkatan: *${departureTime}*
+• Jumlah Penumpang: *${passengers}*
 
-*SERVICE TYPE:*
-🚌 Type: ${inclusionText}
+👤 *DATA PENUMPANG:*
+• Nama Pemesan: *${name}*
+• No. WhatsApp: *${phone}*
+• Alamat Penjemputan: *${pickupAddress}*
+• Alamat Tujuan: *${destinationAddress || '-'}*
+• Catatan / Bagasi: *${notes || '-'}*
 
-Thank you!`;
-    } else {
-      textTemplate = `Halo Rajawali Trans, saya ingin memesan tiket travel / carter rute Kefa - Kupang:
+💳 *PEMBAYARAN DP:*
+• Komitmen DP: *${dpText}*
 
-*ARMADA MOBIL:*
-👉 *${car.name}*
-
-*JADWAL PERJALANAN:*
-🗓 Tanggal Keberangkatan: ${startDate}
-⏰ Jam Penjemputan: ${pickupTime}
-⏳ Jumlah Penumpang: ${duration} Orang
-
-*DATA PEMESAN:*
-👤 Nama: ${name}
-📞 No. WhatsApp: ${phone}
-📍 Alamat Jemput & Tujuan: ${pickupAddress}
-📝 Catatan / Barang Bawaan: ${notes || '-'}
-
-*JENIS LAYANAN:*
-🚌 Jenis: ${inclusionText}
-
-Mohon konfirmasi ketersediaan tempat. Terima kasih!`;
-    }
+Mohon konfirmasi jadwal & ketersediaan tempat. Terima kasih!`;
 
     const encodedText = encodeURIComponent(textTemplate);
     const waUrl = `https://api.whatsapp.com/send?phone=${waNumber}&text=${encodedText}`;
@@ -127,327 +86,384 @@ Mohon konfirmasi ketersediaan tempat. Terima kasih!`;
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
         {/* Backdrop overlay */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+          className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm"
           id="booking-backdrop"
         />
 
-        {/* Modal panel */}
+        {/* Modal Panel Container */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 30 }}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 30 }}
-          className="bg-white rounded-[32px] w-full max-w-4xl shadow-2xl relative overflow-hidden grid grid-cols-1 md:grid-cols-12 z-10 max-h-[90vh] md:max-h-none"
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          className="bg-white rounded-3xl w-full max-w-4xl shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 z-10 my-auto border border-slate-200"
           id="booking-modal-panel"
         >
-          {/* Left Column: Car Details Summary */}
-          <div className="md:col-span-5 bg-luxury-charcoal text-white p-6 sm:p-8 flex flex-col justify-between overflow-y-auto max-h-[35vh] md:max-h-[80vh] lg:max-h-none">
-            <div className="space-y-6">
-              <div className="flex items-center gap-2 text-luxury-gold">
-                <Sparkles className="w-4 h-4 animate-pulse" />
-                <span className="font-display font-semibold text-xs tracking-widest uppercase">RENTAL DIEGO KUPANG</span>
-              </div>
+          
+          {/* LEFT SIDEBAR: CAR & SERVICE PREVIEW */}
+          <div className="lg:col-span-4 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-950 text-white p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden text-left">
+            <div className="space-y-5 relative z-10">
               
-              <div className="space-y-2">
-                <h3 className="font-display font-extrabold text-2xl sm:text-3xl tracking-tight leading-tight uppercase text-left">
-                  {car.name}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-400 text-[10px] font-extrabold uppercase tracking-widest">
+                <Sparkles className="w-3.5 h-3.5 text-orange-400" />
+                <span>FORM PEMESANAN RESMI</span>
+              </div>
+
+              <div>
+                <h3 className="font-display font-black text-2xl text-white uppercase tracking-tight">
+                  {currentSelectedCar.name}
                 </h3>
-                <p className="font-sans text-xs text-gray-400 text-left">
-                  {car.description}
+                <p className="font-sans text-xs text-orange-400 font-bold mt-0.5">
+                  {currentSelectedCar.priceDisplay || 'Travel PP 125rb/Org | Carter mulai 600rb'}
                 </p>
               </div>
 
-              {/* Car visual cutout in modal */}
-              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-black/40 aspect-[4/3]">
+              {/* Car Cutout Photo */}
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-slate-800/80 aspect-[16/10] p-2 flex items-center justify-center">
                 <img
-                  src={car.image}
-                  alt={car.name}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
+                  src={currentSelectedCar.image}
+                  alt={currentSelectedCar.name}
+                  className="w-full h-full object-contain drop-shadow-md"
                 />
               </div>
 
-              {/* Specs items in modal */}
-              <div className="space-y-2 border-t border-white/10 pt-4 text-xs text-gray-300">
-                <p className="font-display font-bold uppercase text-luxury-gold tracking-widest text-[9px] mb-3 text-left">
-                  {lang === 'EN' ? 'Specifications & Features:' : 'Spesifikasi & Fasilitas:'}
-                </p>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-                  <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-gray-400">{lang === 'EN' ? 'Seats:' : 'Kapasitas:'}</span>
-                    <span className="font-semibold">{car.seats} {lang === 'EN' ? 'Seats' : 'Kursi'}</span>
-                  </div>
-                  <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-gray-400">{lang === 'EN' ? 'Fuel:' : 'Bahan Bakar:'}</span>
-                    <span className="font-semibold text-ellipsis overflow-hidden whitespace-nowrap max-w-[80px]">
-                      {car.fuel}
-                    </span>
-                  </div>
-                  <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-gray-400">{lang === 'EN' ? 'Transmission:' : 'Transmisi:'}</span>
-                    <span className="font-semibold">
-                      {car.transmission}
-                    </span>
-                  </div>
-                  <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-gray-400">{lang === 'EN' ? 'Driver:' : 'Driver:'}</span>
-                    <span className="font-semibold text-luxury-gold">{lang === 'EN' ? 'Included' : 'Termasuk'}</span>
-                  </div>
+              {/* Specs & Facility List */}
+              <div className="space-y-2 text-xs text-slate-300 border-t border-white/10 pt-4">
+                <div className="flex justify-between py-1 border-b border-white/5">
+                  <span className="text-slate-400">Kapasitas:</span>
+                  <span className="font-semibold text-white">{currentSelectedCar.seats} Kursi</span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-white/5">
+                  <span className="text-slate-400">Fasilitas AC:</span>
+                  <span className="font-semibold text-emerald-400">Double Blower</span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-white/5">
+                  <span className="text-slate-400">Pelayanan:</span>
+                  <span className="font-semibold text-orange-400">Door to Door</span>
                 </div>
               </div>
+
+              {/* DP Policy Highlight Card */}
+              <div className="p-3.5 rounded-2xl bg-orange-500/10 border border-orange-500/30 text-left space-y-1">
+                <div className="flex items-center gap-1.5 text-orange-400 font-extrabold text-[11px] uppercase tracking-wide">
+                  <ShieldCheck className="w-4 h-4 shrink-0 text-orange-400" />
+                  <span>Jaminan DP Min Rp 50.000</span>
+                </div>
+                <p className="font-sans text-[11px] text-slate-300 leading-relaxed font-medium">
+                  DP minimal Rp 50.000 diperlukan sebagai tanda jadi pemesanan resmi untuk mengamankan jam & tempat duduk armada Anda.
+                </p>
+              </div>
+
             </div>
 
-            {/* Bottom booking summary */}
-            <div className="mt-8 pt-6 border-t border-white/10 hidden md:block text-left">
-              <p className="text-xs text-gray-400 uppercase font-bold tracking-widest mb-1">
-                {lang === 'EN' ? 'Booking Details' : 'Detail Pemesanan'}
-              </p>
-              <div className="space-y-1.5 text-xs text-gray-300 font-sans">
-                <div className="flex justify-between">
-                  <span>{t.modal_summary_base}:</span>
-                  <span className="font-semibold text-luxury-gold">{car.name}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>{t.modal_summary_total_days}:</span>
-                  <span className="font-semibold">{duration} {lang === 'EN' ? 'Days' : 'Hari'}</span>
-                </div>
-                {car.pricePerDay > 0 && includeTolParkir && (
-                  <div className="flex justify-between">
-                    <span>{lang === 'EN' ? 'Tolls & Parking:' : 'Toll & Parkir:'}</span>
-                    <span className="font-semibold text-emerald-400">{lang === 'EN' ? 'Included' : 'Termasuk'}</span>
-                  </div>
-                )}
-              </div>
+            {/* Footer Trust Info */}
+            <div className="pt-4 border-t border-white/10 mt-6 text-[10px] text-slate-400 font-medium flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+              <span>Respon Cepat 24 Jam Via WhatsApp Official</span>
             </div>
           </div>
 
-          {/* Right Column: Interactive Booking Form */}
-          <div className="md:col-span-7 p-6 sm:p-8 overflow-y-auto max-h-[55vh] md:max-h-[80vh] lg:max-h-[85vh] flex flex-col justify-between bg-white relative">
+          {/* RIGHT SIDEBAR: PROFESSIONAL WA FORM */}
+          <div className="lg:col-span-8 p-6 sm:p-8 bg-white max-h-[80vh] overflow-y-auto relative text-left">
             
-            {/* Close button on right corner */}
+            {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-900 transition-colors cursor-pointer z-20"
+              className="absolute top-5 right-5 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-800 transition-colors cursor-pointer z-20"
               id="close-booking-modal"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
 
             {!isBooked ? (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="space-y-1 text-left">
-                  <h4 className="font-display font-extrabold text-xl text-gray-900 uppercase">
-                    {t.modal_title}
+              <form onSubmit={handleSubmit} className="space-y-6">
+                
+                {/* Header Title */}
+                <div>
+                  <h4 className="font-display font-black text-xl sm:text-2xl text-[#0f172a] uppercase tracking-tight">
+                    Form Pemesanan Tiket & Carter
                   </h4>
-                  <p className="font-sans text-xs text-gray-500 leading-relaxed">
-                    {t.modal_desc}
+                  <p className="font-sans text-xs text-slate-500 leading-relaxed font-medium mt-1">
+                    Lengkapi draf jadwal & data penjemputan di bawah untuk langsung terhubung dengan admin via WhatsApp.
                   </p>
                 </div>
 
-                <div className="space-y-4">
-                  {/* Select Car Dropdown */}
+                {/* 1. SELEKSI LAYANAN RUTE & ARMADA */}
+                <div className="space-y-4 pt-2">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-orange-600 block">
+                    1. PILIH LAYANAN RUTE & ARMADA
+                  </span>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    <button
+                      type="button"
+                      onClick={() => setServiceType('kefa_kupang')}
+                      className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                        serviceType === 'kefa_kupang'
+                          ? 'border-orange-500 bg-orange-50/70 text-orange-950 font-bold shadow-xs'
+                          : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-medium'
+                      }`}
+                    >
+                      <span className="text-[10px] uppercase font-bold tracking-wider block text-orange-600">Travel Reguler</span>
+                      <span className="text-xs font-bold block mt-0.5">Kefa ➔ Kupang</span>
+                      <span className="text-[11px] font-black text-slate-900 block">Rp 125.000 /org</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setServiceType('kupang_kefa')}
+                      className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                        serviceType === 'kupang_kefa'
+                          ? 'border-orange-500 bg-orange-50/70 text-orange-950 font-bold shadow-xs'
+                          : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-medium'
+                      }`}
+                    >
+                      <span className="text-[10px] uppercase font-bold tracking-wider block text-orange-600">Travel Reguler</span>
+                      <span className="text-xs font-bold block mt-0.5">Kupang ➔ Kefa</span>
+                      <span className="text-[11px] font-black text-slate-900 block">Rp 125.000 /org</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setServiceType('carter')}
+                      className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                        serviceType === 'carter'
+                          ? 'border-emerald-500 bg-emerald-50/70 text-emerald-950 font-bold shadow-xs'
+                          : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-medium'
+                      }`}
+                    >
+                      <span className="text-[10px] uppercase font-bold tracking-wider block text-emerald-600">Privat Rombongan</span>
+                      <span className="text-xs font-bold block mt-0.5">Carter 1 Mobil</span>
+                      <span className="text-[11px] font-black text-slate-900 block">Mulai Rp 600.000</span>
+                    </button>
+                  </div>
+
+                  {/* Dropdown Pilihan Mobil */}
                   <div className="space-y-1">
-                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wide text-left font-display">
-                      {lang === 'EN' ? 'Choose Fleet / Car' : 'Pilih Armada / Unit Mobil'} <span className="text-red-500">*</span>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                      Pilihan Unit Armada Mobil <span className="text-red-500">*</span>
                     </label>
                     <select
-                      value={car.id}
+                      value={selectedCarId}
                       onChange={(e) => {
+                        setSelectedCarId(e.target.value);
                         const newCar = CARS.find(c => c.id === e.target.value);
-                        if (newCar && onCarChange) {
-                          onCarChange(newCar);
-                        }
+                        if (newCar && onCarChange) onCarChange(newCar);
                       }}
-                      className="block w-full px-3 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#2563eb] focus:border-[#2563eb] text-sm font-sans text-left cursor-pointer"
+                      className="block w-full px-3.5 py-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-xs font-sans font-semibold text-slate-900 cursor-pointer bg-white"
                     >
                       {CARS.map(c => (
-                        <option key={c.id} value={c.id}>{c.name}</option>
+                        <option key={c.id} value={c.id}>
+                          {c.name} ({c.category} - {c.seats} Kursi)
+                        </option>
                       ))}
                     </select>
                   </div>
+                </div>
 
-                  {/* Name Input */}
-                  <div className="space-y-1">
-                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wide text-left">
-                      {t.modal_field_name} <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                        <User className="w-4 h-4" />
+                {/* 2. DATA PENUMPANG */}
+                <div className="space-y-3 pt-2">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-orange-600 block">
+                    2. DATA PENUMPANG & KONTAK
+                  </span>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        Nama Lengkap Pemesan <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                        <input
+                          type="text"
+                          required
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Contoh: Yoseph Bere"
+                          className="block w-full pl-9 pr-3 py-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500 text-xs font-sans text-slate-900"
+                        />
                       </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        Nomor WhatsApp / HP <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                        <input
+                          type="tel"
+                          required
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder="Contoh: 081236313554"
+                          className="block w-full pl-9 pr-3 py-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500 text-xs font-sans text-slate-900"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. JADWAL & ALAMAT PENJEMPUTAN */}
+                <div className="space-y-3 pt-2">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-orange-600 block">
+                    3. JADWAL & ALAMAT DOOR TO DOOR
+                  </span>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="space-y-1">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        Tanggal Berangkat <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="date"
+                        required
+                        value={departureDate}
+                        onChange={(e) => setDepartureDate(e.target.value)}
+                        className="block w-full px-3 py-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500 text-xs font-sans text-slate-900"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        Waktu Keberangkatan
+                      </label>
+                      <select
+                        value={departureTime}
+                        onChange={(e) => setDepartureTime(e.target.value)}
+                        className="block w-full px-3 py-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500 text-xs font-sans font-semibold text-slate-900 cursor-pointer bg-white"
+                      >
+                        <option value="07:00 (Pagi)">07:00 (Pagi)</option>
+                        <option value="11:00 (Siang)">11:00 (Siang)</option>
+                        <option value="16:00 (Sore)">16:00 (Sore)</option>
+                        <option value="Bebas Jam Carter">Bebas Jam Carter</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        Jumlah Penumpang
+                      </label>
                       <input
                         type="text"
-                        required
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder={lang === 'EN' ? 'e.g. Faisal Al-Otaibi' : 'Contoh: Rian Prasetya'}
-                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-luxury-gold focus:border-luxury-gold text-sm font-sans"
+                        value={passengers}
+                        onChange={(e) => setPassengers(e.target.value)}
+                        placeholder="1 Orang / 1 Mobil Carter"
+                        className="block w-full px-3 py-2.5 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500 text-xs font-sans text-slate-900"
                       />
                     </div>
                   </div>
 
-                  {/* Phone Input */}
-                  <div className="space-y-1">
-                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wide text-left">
-                      {t.modal_field_phone} <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                        <Phone className="w-4 h-4" />
-                      </div>
-                      <input
-                        type="tel"
-                        required
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="e.g. 08123456789"
-                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-luxury-gold focus:border-luxury-gold text-sm font-sans"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Dates Row */}
-                  <div className="grid grid-cols-2 gap-4">
+                  {/* Address Fields */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="space-y-1">
-                      <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wide text-left">
-                        {t.modal_field_date} <span className="text-red-500">*</span>
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        Alamat Lengkap Penjemputan <span className="text-red-500">*</span>
                       </label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                          <Calendar className="w-4 h-4" />
-                        </div>
-                        <input
-                          type="date"
-                          required
-                          value={startDate}
-                          onChange={(e) => setStartDate(e.target.value)}
-                          className="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-luxury-gold focus:border-luxury-gold text-sm font-sans"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-1">
-                      <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wide text-left">
-                        {t.modal_field_time}
-                      </label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                          <Clock className="w-4 h-4" />
-                        </div>
-                        <input
-                          type="time"
-                          value={pickupTime}
-                          onChange={(e) => setPickupTime(e.target.value)}
-                          className="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-luxury-gold focus:border-luxury-gold text-sm font-sans"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Duration Slider / Select */}
-                  <div className="space-y-1 text-left">
-                    <div className="flex justify-between items-center text-xs font-semibold text-gray-700 uppercase tracking-wide">
-                      <span>{t.modal_field_duration}: <strong>{duration} {lang === 'EN' ? 'Days' : 'Hari'}</strong></span>
-                    </div>
-                    <input
-                      type="range"
-                      min="1"
-                      max="30"
-                      value={duration}
-                      onChange={(e) => setDuration(parseInt(e.target.value))}
-                      className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-luxury-gold"
-                    />
-                    <div className="flex justify-between text-[10px] text-gray-400">
-                      <span>1 {lang === 'EN' ? 'Day' : 'Hari'}</span>
-                      <span>15 {lang === 'EN' ? 'Days' : 'Hari'}</span>
-                      <span>30 {lang === 'EN' ? 'Days' : 'Hari'}</span>
-                    </div>
-                  </div>
-
-                  {/* Inclusion BBM / Tol Parkir Option (Only for Avanza/Innova pricing) */}
-                  {car.pricePerDay > 0 && (
-                    <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100 flex items-center justify-between">
-                      <div className="space-y-0.5 text-left">
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-display font-bold text-xs text-gray-900">{t.modal_field_extra_allin}</span>
-                          <span className="bg-luxury-gold/20 text-luxury-gold text-[8px] font-bold px-1.5 py-0.5 rounded uppercase">
-                            {lang === 'EN' ? 'Recommended' : 'Direkomendasikan'}
-                          </span>
-                        </div>
-                        <p className="font-sans text-[10px] text-gray-500 leading-snug">
-                          {t.modal_field_extra_detail}
-                        </p>
-                      </div>
-                      
-                      <button
-                        type="button"
-                        onClick={() => setIncludeTolParkir(!includeTolParkir)}
-                        className={`w-12 h-6.5 rounded-full p-1 transition-colors cursor-pointer flex items-center ${
-                          includeTolParkir ? 'bg-luxury-gold justify-end' : 'bg-gray-200 justify-start'
-                        }`}
-                      >
-                        <motion.div layout className="w-4.5 h-4.5 rounded-full bg-white shadow" />
-                      </button>
-                    </div>
-                  )}
-
-                  {/* Pickup Address */}
-                  <div className="space-y-1">
-                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wide text-left">
-                      {t.modal_field_address} <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <div className="absolute top-3 left-0 pl-3 pointer-events-none text-gray-400">
-                        <MapPin className="w-4 h-4" />
-                      </div>
                       <textarea
                         required
                         rows={2}
                         value={pickupAddress}
                         onChange={(e) => setPickupAddress(e.target.value)}
-                        placeholder={lang === 'EN' ? 'Please specify hotel name, station, airport...' : 'Tuliskan nama hotel, stasiun, bandara, atau alamat lengkap...'}
-                        className="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-luxury-gold focus:border-luxury-gold text-sm font-sans"
+                        placeholder="Contoh: Jl. El Tari KM 04 Kefamenanu (Depan Kantor/Rumah)..."
+                        className="block w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500 text-xs font-sans text-slate-900"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                        Alamat Tujuan Pengantaran
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={destinationAddress}
+                        onChange={(e) => setDestinationAddress(e.target.value)}
+                        placeholder="Contoh: Oebobo Kota Kupang / Bandara El Tari..."
+                        className="block w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500 text-xs font-sans text-slate-900"
                       />
                     </div>
                   </div>
+                </div>
 
-                  {/* Special Notes */}
-                  <div className="space-y-1">
-                    <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wide text-left">
-                      {t.modal_field_notes}
-                    </label>
-                    <textarea
-                      rows={1}
-                      value={notes}
-                      onChange={(e) => setNotes(e.target.value)}
-                      placeholder={lang === 'EN' ? 'e.g. Large luggage capacity requested...' : 'Contoh: Bagasi luas untuk koper besar, kursi bayi, dll...'}
-                      className="block w-full px-3 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-luxury-gold focus:border-luxury-gold text-sm font-sans text-left"
-                    />
+                {/* 4. KONFIRMASI DP MINIMAL RP 50.000 */}
+                <div className="space-y-3 pt-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-orange-600 block">
+                      4. KETENTUAN DP TANDA JADI (MIN. RP 50.000)
+                    </span>
+                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                      Garansi Tempat Duduk
+                    </span>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-orange-50/80 border border-orange-200 space-y-3">
+                    <div className="flex items-start gap-2.5">
+                      <AlertCircle className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
+                      <p className="text-xs text-orange-950 font-medium leading-relaxed">
+                        Pemesanan tiket/carter memerlukan <strong>DP minimal Rp 50.000</strong> sebagai tanda jadi resmi agar jadwal dan unit armada diprioritaskan bagi Anda. Sisa pembayaran dilunasi saat keberangkatan.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                      <label className={`flex items-center gap-2 p-2.5 rounded-xl border cursor-pointer transition-colors ${dpOption === 'dp50' ? 'bg-white border-orange-500 text-orange-950 font-bold shadow-xs' : 'bg-white/60 border-slate-200 text-slate-700'}`}>
+                        <input
+                          type="radio"
+                          name="dp"
+                          checked={dpOption === 'dp50'}
+                          onChange={() => setDpOption('dp50')}
+                          className="accent-orange-600"
+                        />
+                        <span className="text-xs">DP Min. Rp 50.000</span>
+                      </label>
+
+                      <label className={`flex items-center gap-2 p-2.5 rounded-xl border cursor-pointer transition-colors ${dpOption === 'dp100' ? 'bg-white border-orange-500 text-orange-950 font-bold shadow-xs' : 'bg-white/60 border-slate-200 text-slate-700'}`}>
+                        <input
+                          type="radio"
+                          name="dp"
+                          checked={dpOption === 'dp100'}
+                          onChange={() => setDpOption('dp100')}
+                          className="accent-orange-600"
+                        />
+                        <span className="text-xs">DP Standar Rp 100.000</span>
+                      </label>
+
+                      <label className={`flex items-center gap-2 p-2.5 rounded-xl border cursor-pointer transition-colors ${dpOption === 'lunas' ? 'bg-white border-orange-500 text-orange-950 font-bold shadow-xs' : 'bg-white/60 border-slate-200 text-slate-700'}`}>
+                        <input
+                          type="radio"
+                          name="dp"
+                          checked={dpOption === 'lunas'}
+                          onChange={() => setDpOption('lunas')}
+                          className="accent-orange-600"
+                        />
+                        <span className="text-xs">Bayar Lunas di Tempat</span>
+                      </label>
+                    </div>
                   </div>
                 </div>
 
-                {/* Submit Action Button & Price Display */}
-                <div className="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                  <div className="text-left">
-                    <span className="text-[10px] text-gray-400 uppercase font-bold tracking-wider block">{lang === 'EN' ? 'Rate Info' : 'Informasi Tarif'}</span>
-                    <span className="font-display font-bold text-xs sm:text-sm text-luxury-gold">{lang === 'EN' ? 'Contact for best quote' : 'Hubungi kontak kami untuk penawaran terbaik'}</span>
+                {/* Submit Action Button */}
+                <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-left text-xs text-slate-500 font-medium">
+                    <span className="block font-bold text-slate-900">Siap Kirim Pesanan?</span>
+                    <span>Draf pesanan terisi rapi langsung ke WA Official</span>
                   </div>
 
                   <button
                     type="submit"
-                    className="bg-green-600 hover:bg-green-700 text-white font-display font-bold text-sm px-8 py-3.5 rounded-full shadow-lg shadow-green-600/15 transition-all flex items-center justify-center gap-2 cursor-pointer ml-auto"
+                    className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-display font-black text-sm px-8 py-3.5 rounded-full shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2.5 cursor-pointer"
                     id="submit-booking-to-whatsapp"
                   >
-                    <Send className="w-4.5 h-4.5" />
-                    <span>{t.modal_btn_confirm}</span>
+                    <Send className="w-4 h-4" />
+                    <span>Kirim Pemesanan via WhatsApp ➔</span>
                   </button>
                 </div>
+
               </form>
             ) : (
               <motion.div
@@ -456,22 +472,20 @@ Mohon konfirmasi ketersediaan tempat. Terima kasih!`;
                 className="flex flex-col items-center justify-center text-center py-12 space-y-4"
                 id="booking-success-message"
               >
-                <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-2">
-                  <CheckCircle className="w-10 h-10" />
+                <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 mb-2 shadow-sm">
+                  <CheckCircle2 className="w-10 h-10" />
                 </div>
-                <h4 className="font-display font-bold text-2xl text-gray-900 uppercase">
-                  {lang === 'EN' ? 'Booking Draft Created!' : 'Pemesanan Dikirim!'}
+                <h4 className="font-display font-black text-2xl text-slate-900 uppercase">
+                  Draf Pemesanan Dikirim!
                 </h4>
-                <p className="font-sans text-gray-600 text-sm max-w-md leading-relaxed">
-                  {lang === 'EN' 
-                    ? `We have generated a WhatsApp reservation draft. Please click Send on your WhatsApp chat to complete your booking for ${car.name}.`
-                    : `Kami telah membuat draf pesanan WhatsApp untuk armada ${car.name}. Silakan kirim pesan di aplikasi WhatsApp untuk menyelesaikan pemesanan.`}
+                <p className="font-sans text-slate-600 text-sm max-w-md leading-relaxed font-medium">
+                  Draf pesanan WhatsApp untuk armada <strong>{currentSelectedCar.name}</strong> telah siap. Silakan klik tombol <strong>Kirim</strong> di aplikasi WhatsApp Anda untuk mengonfirmasi jadwal & pembayaran DP.
                 </p>
                 <button
                   onClick={onClose}
-                  className="bg-luxury-gold hover:bg-luxury-gold-dark text-white font-display font-bold text-sm px-6 py-3 rounded-full shadow-md transition-colors cursor-pointer mt-4"
+                  className="bg-orange-600 hover:bg-orange-700 text-white font-display font-bold text-sm px-7 py-3 rounded-full shadow-md transition-colors cursor-pointer mt-2"
                 >
-                  {lang === 'EN' ? 'Back' : 'Kembali'}
+                  Tutup Form
                 </button>
               </motion.div>
             )}
