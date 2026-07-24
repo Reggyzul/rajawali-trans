@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ShieldCheck, Sparkles, CheckCircle2, Compass, Award, HeartHandshake, Quote } from 'lucide-react';
+import { ShieldCheck, Sparkles, CheckCircle2, Compass, Award, HeartHandshake, Quote, Eye, Zap, Shield } from 'lucide-react';
 import { TRANSLATIONS } from '../utils/translations';
 
 interface AboutProps {
@@ -14,12 +14,12 @@ export default function About({ lang }: AboutProps) {
     <section id="about" className="py-20 sm:py-24 bg-gradient-to-b from-white via-slate-50 to-white text-[#0f172a] overflow-hidden relative border-b border-slate-200">
       
       {/* Background Subtle Soft Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-orange-400/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-orange-400/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 space-y-3.5" id="about-heading">
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3.5" id="about-heading">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -27,7 +27,7 @@ export default function About({ lang }: AboutProps) {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200 text-orange-600 font-display font-extrabold text-xs tracking-widest uppercase shadow-sm"
           >
             <Compass className="w-4 h-4 text-orange-600" />
-            <span>VISI & MISI PO. RAJAWALI TRANS</span>
+            <span>PROFIL & FILOSOFI RAJAWALI TRANS</span>
           </motion.div>
 
           <motion.h2 
@@ -36,32 +36,184 @@ export default function About({ lang }: AboutProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#0f172a] tracking-tight uppercase leading-tight"
           >
-            Komitmen Pelayanan <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500">Terpercaya & Berkualitas</span>
+            Visi & Filosofi <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500">Rajawali Trans</span>
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed font-medium max-w-2xl mx-auto"
+          >
+            Mengenal lebih dekat dedikasi, standar kualitas, serta makna mendalam di balik nama Rajawali Trans sebagai mitra perjalanan terpercaya di NTT.
+          </motion.p>
         </div>
 
-        {/* ULTRA-PRECISE PROFESSIONAL SINGLE COLUMN CARD */}
+        {/* 2-COLUMN PROFILE & PHILOSOPHY GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch mb-12">
+          
+          {/* LEFT COLUMN: BRAND LOGO SHOWCASE & COMPANY PROFILE */}
+          <motion.div
+            initial={{ opacity: 0, x: -25 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white rounded-3xl p-8 shadow-2xl border border-slate-700/60 flex flex-col justify-between relative overflow-hidden group"
+          >
+            {/* Background Orange Glow Accent */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-orange-500/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-500/10 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="space-y-6 relative z-10 text-center">
+              
+              {/* Logo Frame */}
+              <div className="relative inline-block mx-auto">
+                <div className="absolute inset-0 bg-orange-500/20 blur-xl rounded-full" />
+                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-slate-800/90 border-2 border-orange-500/40 p-4 flex items-center justify-center mx-auto shadow-2xl backdrop-blur-sm group-hover:scale-105 transition-transform duration-300">
+                  <img
+                    src="/logo.png"
+                    alt="Logo Rajawali Trans"
+                    className="w-full h-full object-contain drop-shadow-xl"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-orange-400 bg-orange-950/80 px-3 py-1 rounded-full border border-orange-800/50">
+                  LAYANAN TRAVEL & CARTER
+                </span>
+                <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight uppercase mt-3">
+                  RAJAWALI <span className="text-orange-500">TRANS</span>
+                </h3>
+                <p className="font-sans text-slate-400 text-xs mt-1 font-medium">
+                  Kefamenanu - Kupang PP & Carter Privat
+                </p>
+              </div>
+
+              {/* Motto Box */}
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-left space-y-1.5">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-orange-400 block">MOTTO KAMI</span>
+                <p className="font-sans text-xs text-slate-300 italic leading-relaxed">
+                  "Mengutamakan keamanan, ketepatan waktu, dan kenyamanan perjalanan di setiap jengkal rute tanah Timor."
+                </p>
+              </div>
+
+            </div>
+
+            {/* Bottom Status Badges */}
+            <div className="pt-6 mt-6 border-t border-slate-800 flex items-center justify-around text-center relative z-10">
+              <div>
+                <span className="font-display font-black text-lg text-orange-400 block">100%</span>
+                <span className="text-[10px] text-slate-400 font-bold uppercase">Terpercaya</span>
+              </div>
+              <div className="w-px h-8 bg-slate-800" />
+              <div>
+                <span className="font-display font-black text-lg text-orange-400 block">24/7</span>
+                <span className="text-[10px] text-slate-400 font-bold uppercase">Siap Melayani</span>
+              </div>
+              <div className="w-px h-8 bg-slate-800" />
+              <div>
+                <span className="font-display font-black text-lg text-orange-400 block">VIP</span>
+                <span className="text-[10px] text-slate-400 font-bold uppercase">Standar Nyaman</span>
+              </div>
+            </div>
+
+          </motion.div>
+
+          {/* RIGHT COLUMN: DEEP PERSUASIVE PHILOSOPHY */}
+          <motion.div
+            initial={{ opacity: 0, x: 25 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-7 bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col justify-between relative overflow-hidden space-y-6"
+          >
+            <div className="space-y-6 text-left">
+              
+              <div className="flex items-center gap-2 text-orange-600">
+                <Award className="w-5 h-5" />
+                <span className="font-display font-extrabold text-xs tracking-wider uppercase">FILOSOFI DIBALIK NAMA RAJAWALI</span>
+              </div>
+
+              <h3 className="font-display font-black text-2xl sm:text-3xl text-[#0f172a] uppercase tracking-tight leading-snug">
+                Makna Mendalam & <span className="text-orange-600">Filosofi Keunggulan</span>
+              </h3>
+
+              {/* 3 Pillars of Philosophy */}
+              <div className="space-y-4">
+                
+                {/* Pillar 1 */}
+                <div className="p-4 rounded-2xl bg-orange-50/50 border border-orange-100 flex items-start gap-4 hover:border-orange-300 transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
+                    <Zap className="w-5 h-5 fill-current" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-sm text-[#0f172a] uppercase tracking-wide">
+                      1. Ketangguhan & Kecepatan Presisi
+                    </h4>
+                    <p className="font-sans text-xs text-slate-600 leading-relaxed font-medium mt-1">
+                      Rajawali adalah raja udara yang tangguh terbang melintasi berbagai kondisi. Filosofi ini mewakili ketahanan armada dan keandalan driver kami dalam menembus rute darat Timor dengan cepat, aman, dan tepat waktu.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Pillar 2 */}
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4 hover:border-orange-300 transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
+                    <Shield className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-sm text-[#0f172a] uppercase tracking-wide">
+                      2. Sayap Perlindungan & Kenyamanan
+                    </h4>
+                    <p className="font-sans text-xs text-slate-600 leading-relaxed font-medium mt-1">
+                      Bagaikan kepakan sayap Rajawali yang melingkungi dan melindungi, kami berkomitmen memberikan rasa aman, kabin yang steril, dan kenyamanan maksimal bagi setiap penumpang dan keluarga tercinta.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Pillar 3 */}
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4 hover:border-orange-300 transition-all">
+                  <div className="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center shrink-0 shadow-md mt-0.5">
+                    <Eye className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display font-bold text-sm text-[#0f172a] uppercase tracking-wide">
+                      3. Penglihatan Tajam & Komitmen Kejujuran
+                    </h4>
+                    <p className="font-sans text-xs text-slate-600 leading-relaxed font-medium mt-1">
+                      Mata Rajawali yang tajam melambangkan ketelitian standar operasional, ketepatan waktu penjemputan, serta kejujuran dalam pelayanan tanpa biaya tersembunyi.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </motion.div>
+
+        </div>
+
+        {/* CORE VISI & MISI STATEMENT CARD */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-slate-200/60 relative overflow-hidden space-y-8"
+          className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden space-y-8"
         >
-          {/* Subtle Top Right Decorative Accent */}
-          <div className="absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl from-orange-400/10 via-transparent to-transparent rounded-bl-full pointer-events-none" />
-
-          {/* Header Badge & Quote Icon Row */}
+          {/* Header Row */}
           <div className="flex items-center justify-between border-b border-slate-100 pb-5">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-2xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 shadow-sm">
                 <Award className="w-6 h-6" />
               </div>
-              <div>
+              <div className="text-left">
                 <span className="font-display font-black text-base text-[#0f172a] uppercase tracking-tight block">
-                  STANDAR OPERASIONAL UTAMA
+                  STANDAR VISI & MISI OPERASIONAL
                 </span>
                 <span className="text-[11px] font-bold text-orange-600 uppercase tracking-wider block mt-0.5">
-                  Kupang & Wilayah Sekitarnya
+                  Sebagai Penyedia Layanan Rental & Travel Terpercaya
                 </span>
               </div>
             </div>
@@ -69,7 +221,7 @@ export default function About({ lang }: AboutProps) {
             <Quote className="w-8 h-8 text-orange-200 shrink-0 hidden sm:block" />
           </div>
 
-          {/* Core Visi & Misi Statement Box with High Precision Typography */}
+          {/* Statement Box */}
           <div className="bg-gradient-to-br from-orange-50/50 via-slate-50/80 to-white border-l-4 border-orange-500 p-6 sm:p-8 rounded-r-2xl border-y border-r border-slate-200/80 shadow-inner relative">
             <p className="font-sans text-base sm:text-[17px] text-slate-800 leading-[1.8] font-medium tracking-normal text-justify sm:text-left">
               "Sebagai penyedia layanan rental mobil terpercaya di Kupang dan sekitarnya, kami menghadirkan armada yang terawat, pelayanan profesional, dan standar operasional yang mengutamakan keamanan, kenyamanan, serta kepuasan pelanggan. Setiap perjalanan didukung oleh layanan yang andal, efisien, dan berorientasi pada kualitas."
@@ -79,7 +231,7 @@ export default function About({ lang }: AboutProps) {
           {/* 3 Precise Pillar Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors text-left">
               <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 shrink-0 mt-0.5 shadow-xs">
                 <ShieldCheck className="w-4.5 h-4.5" />
               </div>
@@ -89,7 +241,7 @@ export default function About({ lang }: AboutProps) {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors text-left">
               <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 shrink-0 mt-0.5 shadow-xs">
                 <HeartHandshake className="w-4.5 h-4.5" />
               </div>
@@ -99,7 +251,7 @@ export default function About({ lang }: AboutProps) {
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors text-left">
               <div className="w-8 h-8 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 shrink-0 mt-0.5 shadow-xs">
                 <Sparkles className="w-4.5 h-4.5" />
               </div>
