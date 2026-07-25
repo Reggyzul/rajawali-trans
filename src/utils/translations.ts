@@ -2,7 +2,7 @@ export const TRANSLATIONS = {
   ID: {
     // Navigation
     nav_home: "Beranda",
-    nav_about: "Profil & Sejarah",
+    nav_about: "Tentang Kami",
     nav_services: "Rute & Tarif",
     nav_cars: "Armada Mobil",
     nav_steps: "Cara Pesan",
@@ -135,7 +135,7 @@ export const TRANSLATIONS = {
   EN: {
     // Navigation
     nav_home: "Home",
-    nav_about: "Profile & History",
+    nav_about: "About Us",
     nav_services: "Routes & Rates",
     nav_cars: "Fleet",
     nav_steps: "How to Book",

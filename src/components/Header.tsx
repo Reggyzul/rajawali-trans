@@ -68,53 +68,50 @@ export default function Header({ activeSection, onNavClick, lang, setLang, curre
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             
-            {/* LEFT GROUP: LOGO + DESKTOP NAV ITEMS */}
-            <div className="flex items-center gap-8">
-              {/* Logo Brand */}
-              <div 
-                onClick={() => handleItemClick({ label: t.nav_home, id: 'home', type: 'page', pageId: 'home' })}
-                className="flex items-center gap-2.5 cursor-pointer group shrink-0"
-                id="header-logo"
-              >
-                <img 
-                  src="/logo.png" 
-                  alt="Rajawali Trans Logo" 
-                  className="h-9 sm:h-10 w-auto object-contain group-hover:scale-105 transition-transform drop-shadow-md"
-                />
-                <div className="flex flex-col">
-                  <span className="font-display font-black text-xl tracking-tight text-[#0f172a] leading-none group-hover:text-orange-600 transition-colors">
-                    RAJAWALI <span className="text-orange-600">TRANS</span>
-                  </span>
-                </div>
+            {/* 1. BRAND LOGO (FAR LEFT) */}
+            <div 
+              onClick={() => handleItemClick({ label: t.nav_home, id: 'home', type: 'page', pageId: 'home' })}
+              className="flex items-center gap-2.5 cursor-pointer group shrink-0"
+              id="header-logo"
+            >
+              <img 
+                src="/logo.png" 
+                alt="Rajawali Trans Logo" 
+                className="h-9 sm:h-10 w-auto object-contain group-hover:scale-105 transition-transform drop-shadow-md"
+              />
+              <div className="flex flex-col">
+                <span className="font-display font-black text-xl tracking-tight text-[#0f172a] leading-none group-hover:text-orange-600 transition-colors">
+                  RAJAWALI <span className="text-orange-600">TRANS</span>
+                </span>
               </div>
-
-              {/* Desktop Nav Items (Aligned Left Next to Logo) */}
-              <nav className="hidden lg:flex items-center gap-1.5" id="desktop-nav">
-                {navItems.map((item) => {
-                  const isItemActive = 
-                    (item.type === 'page' && currentPage === item.pageId) ||
-                    (item.type === 'section' && activeSection === item.sectionId && currentPage === 'home');
-                    
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => handleItemClick(item)}
-                      className={`font-sans text-xs font-extrabold uppercase tracking-wider transition-all duration-300 cursor-pointer relative px-3.5 py-1.5 rounded-full ${
-                        isItemActive
-                          ? 'text-orange-600 bg-orange-50 border border-orange-200/80 shadow-xs'
-                          : 'text-[#0f172a] hover:text-orange-600 hover:bg-slate-100/80'
-                      }`}
-                      id={`nav-link-${item.id}`}
-                    >
-                      {item.label}
-                    </button>
-                  );
-                })}
-              </nav>
             </div>
 
-            {/* RIGHT GROUP: CTA BUTTON ON FAR RIGHT */}
-            <div className="hidden lg:flex items-center">
+            {/* 2. DESKTOP NAV ITEMS (SHIFTED RIGHT / CENTERED FOR PERFECT BALANCE) */}
+            <nav className="hidden lg:flex items-center gap-2 xl:gap-3 mx-auto" id="desktop-nav">
+              {navItems.map((item) => {
+                const isItemActive = 
+                  (item.type === 'page' && currentPage === item.pageId) ||
+                  (item.type === 'section' && activeSection === item.sectionId && currentPage === 'home');
+                  
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleItemClick(item)}
+                    className={`font-sans text-xs font-extrabold uppercase tracking-wider transition-all duration-300 cursor-pointer relative px-4 py-1.5 rounded-full ${
+                      isItemActive
+                        ? 'text-orange-600 bg-orange-50 border border-orange-200/80 shadow-xs'
+                        : 'text-[#0f172a] hover:text-orange-600 hover:bg-slate-100/80'
+                    }`}
+                    id={`nav-link-${item.id}`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </nav>
+
+            {/* 3. CTA BUTTON (FAR RIGHT) */}
+            <div className="hidden lg:flex items-center shrink-0">
               <a
                 href="https://api.whatsapp.com/send?phone=6281236313554&text=Halo%20Rajawali%20Trans,%20saya%20ingin%20tanya%20jadwal%20dan%20pemesanan%20rute%20Kefa%20-%20Kupang"
                 target="_blank"
