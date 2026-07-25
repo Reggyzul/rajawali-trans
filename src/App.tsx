@@ -148,15 +148,15 @@ export default function App() {
             <Testimonials lang={lang} />
           </>
         ) : currentPage === 'about' ? (
-          <div className="pt-32 sm:pt-36">
-            {/* Dedicated Standalone Visi & Misi Page */}
+          <div className="pt-20 sm:pt-24">
+            {/* Dedicated Standalone Profil & Sejarah Page */}
             <About lang={lang} />
             
             {/* Testimonials */}
             <Testimonials lang={lang} />
           </div>
         ) : currentPage === 'tours' ? (
-          <div className="pt-32 sm:pt-36">
+          <div className="pt-20 sm:pt-24">
             {/* Tours View */}
             <ToursList lang={lang} />
             
@@ -164,7 +164,7 @@ export default function App() {
             <Testimonials lang={lang} />
           </div>
         ) : (
-          <div className="pt-32 sm:pt-36">
+          <div className="pt-20 sm:pt-24">
             {/* Rentals View */}
             <CarList onSelectCar={handleSelectCar} lang={lang} />
             
