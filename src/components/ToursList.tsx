@@ -27,7 +27,7 @@ export default function ToursList({ lang }: ToursListProps) {
       id: 'tour-city',
       title: lang === 'EN' ? 'City Tour Malang & Batu' : 'City Tour Malang & Batu',
       duration: lang === 'EN' ? '1 Day Tour' : '1 Hari Penuh (1 Day)',
-      waMessage: 'Halo Rental Diego Kupang, saya tertarik memesan paket wisata Kupang & Timor. Mohon info detailnya.'
+      waMessage: 'Halo Rajawali Trans, saya tertarik memesan paket wisata Kupang & Timor. Mohon info detailnya.'
     },
     {
       id: 'tour-2',
@@ -37,7 +37,7 @@ export default function ToursList({ lang }: ToursListProps) {
       duration: '1 Hari Full (Flexible)',
       image: 'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&q=80&w=600',
       highlights: ['Pantai Lasiana', 'Gua Kristal', 'Pusat Souvenir Tenun', 'Kuliner Ikan Bakar'],
-      waMessage: 'Halo Rental Diego Kupang, saya tertarik memesan paket City Tour Kupang. Mohon info ketersediaannya.'
+      waMessage: 'Halo Rajawali Trans, saya tertarik memesan paket City Tour Kupang. Mohon info ketersediaannya.'
     },
     {
       id: 'tour-3',
@@ -47,7 +47,7 @@ export default function ToursList({ lang }: ToursListProps) {
       duration: 'Sesuai Jam Penerbangan',
       image: 'https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&q=80&w=600',
       highlights: ['Tepat Waktu', 'Bantu Angkat Bagasi', 'Driver Ramah', 'Armada AC Steril'],
-      waMessage: 'Halo Rental Diego Kupang, saya ingin memesan layanan Drop Bandara El Tari Kupang. Mohon konfirmasi tarifnya.'
+      waMessage: 'Halo Rajawali Trans, saya ingin memesan layanan Drop Bandara El Tari Kupang. Mohon konfirmasi tarifnya.'
     }
   ];
 

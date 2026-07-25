@@ -49,7 +49,7 @@ export default function About({ lang }: AboutProps) {
           </motion.p>
         </div>
 
-        {/* 1. PROFIL & SEJARAH PERUSAHAAN (PALING ATAS - DENGAN FOTO DIEGO FOUNDER DI SEBELAH KIRI) */}
+        {/* 1. PROFIL & SEJARAH PERUSAHAAN (PALING ATAS - DENGAN FOTO EMPOS TEFA KETUA DI SEBELAH KIRI) */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,10 +70,10 @@ export default function About({ lang }: AboutProps) {
             </p>
           </div>
 
-          {/* 2-COLUMN GRID: LEFT = DIEGO FOUNDER PHOTO, RIGHT = NARRATIVE PARAGRAPHS */}
+          {/* 2-COLUMN GRID: LEFT = EMPOS TEFA KETUA PHOTO, RIGHT = NARRATIVE PARAGRAPHS */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* LEFT COLUMN: DIEGO FOUNDER PORTRAIT CARD */}
+            {/* LEFT COLUMN: EMPOS TEFA KETUA PORTRAIT CARD */}
             <div className="lg:col-span-4 flex flex-col items-center">
               <div className="relative w-full max-w-xs group">
                 {/* Glow & Border Accent Frame */}
@@ -82,20 +82,20 @@ export default function About({ lang }: AboutProps) {
                 <div className="relative rounded-3xl overflow-hidden border-2 border-orange-200 shadow-2xl bg-slate-900 group-hover:border-orange-400 transition-all duration-300">
                   <img
                     src="/diego_founder.jpg"
-                    alt="Diego - Pendiri Rajawali Trans"
+                    alt="Empos Tefa - Ketua Rajawali Trans"
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   
                   {/* Bottom Profile Badge Overlay */}
                   <div className="bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent p-4 pt-8 text-center text-white space-y-1">
                     <span className="bg-orange-500 text-white font-display font-extrabold text-[10px] uppercase tracking-widest px-3 py-0.5 rounded-full inline-block shadow-md">
-                      PENDIRI / FOUNDER
+                      KETUA RAJAWALI TRANS
                     </span>
                     <h4 className="font-display font-black text-xl text-white tracking-tight uppercase pt-1">
-                      DIEGO
+                      EMPOS TEFA
                     </h4>
                     <p className="font-sans text-[11px] text-slate-300 font-medium leading-snug">
-                      Pendiri & Pimpinan Utama Rajawali Trans TTU
+                      Ketua Rajawali Trans
                     </p>
                   </div>
                 </div>
