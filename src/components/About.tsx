@@ -49,7 +49,7 @@ export default function About({ lang }: AboutProps) {
           </motion.p>
         </div>
 
-        {/* 1. PROFIL & SEJARAH PERUSAHAAN (PALING ATAS) */}
+        {/* 1. PROFIL & SEJARAH PERUSAHAAN (PALING ATAS - DENGAN FOTO DIEGO FOUNDER DI SEBELAH KIRI) */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,39 +70,80 @@ export default function About({ lang }: AboutProps) {
             </p>
           </div>
 
-          {/* Clean Paragraphs & Checkpoint Highlights */}
-          <div className="space-y-5 text-left">
+          {/* 2-COLUMN GRID: LEFT = DIEGO FOUNDER PHOTO, RIGHT = NARRATIVE PARAGRAPHS */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* Paragraph 1 */}
-            <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-extrabold text-lg mt-0.5 shrink-0">✓</span>
-              <p className="font-sans text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
-                <strong className="text-[#0f172a] font-bold">Rajawali Trans</strong> merupakan perusahaan jasa transportasi yang lahir dari semangat kebersamaan dan komitmen untuk menghadirkan layanan transportasi yang aman, nyaman, dan terpercaya bagi masyarakat Kabupaten Timor Tengah Utara (TTU).
-              </p>
+            {/* LEFT COLUMN: DIEGO FOUNDER PORTRAIT CARD */}
+            <div className="lg:col-span-4 flex flex-col items-center">
+              <div className="relative w-full max-w-xs group">
+                {/* Glow & Border Accent Frame */}
+                <div className="absolute inset-0 bg-gradient-to-b from-orange-500/20 to-amber-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300 pointer-events-none" />
+                
+                <div className="relative rounded-3xl overflow-hidden border-2 border-orange-200 shadow-2xl bg-slate-900 group-hover:border-orange-400 transition-all duration-300">
+                  <img
+                    src="/diego_founder.jpg"
+                    alt="Diego - Pendiri Rajawali Trans"
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  
+                  {/* Bottom Profile Badge Overlay */}
+                  <div className="bg-gradient-to-t from-slate-950 via-slate-900/90 to-transparent p-4 pt-8 text-center text-white space-y-1">
+                    <span className="bg-orange-500 text-white font-display font-extrabold text-[10px] uppercase tracking-widest px-3 py-0.5 rounded-full inline-block shadow-md">
+                      PENDIRI / FOUNDER
+                    </span>
+                    <h4 className="font-display font-black text-xl text-white tracking-tight uppercase pt-1">
+                      DIEGO
+                    </h4>
+                    <p className="font-sans text-[11px] text-slate-300 font-medium leading-snug">
+                      Pendiri & Pimpinan Utama Rajawali Trans TTU
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Persuasive Founder Quote */}
+              <div className="mt-4 p-3.5 rounded-2xl bg-orange-50/80 border border-orange-200/80 text-center max-w-xs">
+                <p className="font-sans text-xs text-slate-700 italic font-semibold leading-relaxed">
+                  "Membangun layanan transportasi dari hati, dedikasi, dan menjaga kepercayaan masyarakat TTU."
+                </p>
+              </div>
             </div>
 
-            {/* Paragraph 2 */}
-            <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-extrabold text-lg mt-0.5 shrink-0">✓</span>
-              <p className="font-sans text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
-                Perjalanan kami bermula dari <strong className="text-[#0f172a] font-bold">Rental Kasih</strong>, sebuah usaha yang menjadi fondasi dalam membangun pengalaman, kepercayaan pelanggan, serta pemahaman akan kebutuhan transportasi masyarakat. Seiring waktu, melalui berbagai tantangan dan proses pembelajaran selama bertahun-tahun, lahirlah identitas baru sebagai <strong className="text-orange-600 font-bold">Rajawali Trans</strong> dengan komitmen untuk memberikan pelayanan yang lebih profesional dan berkualitas.
-              </p>
-            </div>
+            {/* RIGHT COLUMN: PARAGRAPHS WITH CHECKMARKS */}
+            <div className="lg:col-span-8 space-y-5 text-left">
+              
+              {/* Paragraph 1 */}
+              <div className="flex items-start gap-3">
+                <span className="text-orange-500 font-extrabold text-lg mt-0.5 shrink-0">✓</span>
+                <p className="font-sans text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                  <strong className="text-[#0f172a] font-bold">Rajawali Trans</strong> merupakan perusahaan jasa transportasi yang lahir dari semangat kebersamaan dan komitmen untuk menghadirkan layanan transportasi yang aman, nyaman, dan terpercaya bagi masyarakat Kabupaten Timor Tengah Utara (TTU).
+                </p>
+              </div>
 
-            {/* Paragraph 3 */}
-            <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-extrabold text-lg mt-0.5 shrink-0">✓</span>
-              <p className="font-sans text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
-                Nama <strong className="text-orange-600 font-bold">Rajawali</strong> dipilih sebagai simbol keberanian, ketangguhan, ketepatan, dan visi yang jauh ke depan. Nilai-nilai tersebut menjadi dasar dalam setiap langkah kami untuk terus berkembang, menjaga kepercayaan pelanggan, dan memberikan pelayanan terbaik dalam setiap perjalanan.
-              </p>
-            </div>
+              {/* Paragraph 2 */}
+              <div className="flex items-start gap-3">
+                <span className="text-orange-500 font-extrabold text-lg mt-0.5 shrink-0">✓</span>
+                <p className="font-sans text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                  Perjalanan kami bermula dari <strong className="text-[#0f172a] font-bold">Rental Kasih</strong>, sebuah usaha yang menjadi fondasi dalam membangun pengalaman, kepercayaan pelanggan, serta pemahaman akan kebutuhan transportasi masyarakat. Seiring waktu, melalui berbagai tantangan dan proses pembelajaran selama bertahun-tahun, lahirlah identitas baru sebagai <strong className="text-orange-600 font-bold">Rajawali Trans</strong> dengan komitmen untuk memberikan pelayanan yang lebih profesional dan berkualitas.
+                </p>
+              </div>
 
-            {/* Paragraph 4 */}
-            <div className="flex items-start gap-3">
-              <span className="text-orange-500 font-extrabold text-lg mt-0.5 shrink-0">✓</span>
-              <p className="font-sans text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
-                Hingga saat ini, <strong className="text-[#0f172a] font-bold">Rajawali Trans</strong> terus berkomitmen menjadi mitra transportasi yang mengutamakan keselamatan, kenyamanan, dan kepuasan pelanggan, serta memberikan kontribusi positif bagi kemajuan masyarakat Timor Tengah Utara.
-              </p>
+              {/* Paragraph 3 */}
+              <div className="flex items-start gap-3">
+                <span className="text-orange-500 font-extrabold text-lg mt-0.5 shrink-0">✓</span>
+                <p className="font-sans text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                  Nama <strong className="text-orange-600 font-bold">Rajawali</strong> dipilih sebagai simbol keberanian, ketangguhan, ketepatan, dan visi yang jauh ke depan. Nilai-nilai tersebut menjadi dasar dalam setiap langkah kami untuk terus berkembang, menjaga kepercayaan pelanggan, dan memberikan pelayanan terbaik dalam setiap perjalanan.
+                </p>
+              </div>
+
+              {/* Paragraph 4 */}
+              <div className="flex items-start gap-3">
+                <span className="text-orange-500 font-extrabold text-lg mt-0.5 shrink-0">✓</span>
+                <p className="font-sans text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                  Hingga saat ini, <strong className="text-[#0f172a] font-bold">Rajawali Trans</strong> terus berkomitmen menjadi mitra transportasi yang mengutamakan keselamatan, kenyamanan, dan kepuasan pelanggan, serta memberikan kontribusi positif bagi kemajuan masyarakat Timor Tengah Utara.
+                </p>
+              </div>
+
             </div>
 
           </div>
