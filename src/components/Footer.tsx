@@ -50,7 +50,7 @@ export default function Footer({ onNavClick, lang }: FooterProps) {
               <img 
                 src="/logo.png" 
                 alt="Rajawali Trans Logo" 
-                className="h-14 w-auto object-contain drop-shadow-xl"
+                className="h-12 w-12 object-cover rounded-full border-2 border-orange-500 shadow-xl"
               />
               <span className="font-display font-black text-xl tracking-tight text-white uppercase">
                 RAJAWALI <span className="text-orange-500">TRANS</span>

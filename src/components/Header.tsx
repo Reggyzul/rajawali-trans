@@ -77,7 +77,7 @@ export default function Header({ activeSection, onNavClick, lang, setLang, curre
               <img 
                 src="/logo.png" 
                 alt="Rajawali Trans Logo" 
-                className="h-9 sm:h-10 w-auto object-contain group-hover:scale-105 transition-transform drop-shadow-md"
+                className="h-10 sm:h-11 w-10 sm:w-11 object-cover rounded-full border-2 border-orange-500 shadow-md group-hover:scale-105 transition-transform"
               />
               <div className="flex flex-col">
                 <span className="font-display font-black text-xl tracking-tight text-[#0f172a] leading-none group-hover:text-orange-600 transition-colors">
