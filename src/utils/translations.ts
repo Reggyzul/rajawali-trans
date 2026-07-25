@@ -59,7 +59,7 @@ export const TRANSLATIONS = {
     // Cars Section
     cars_tag: "ARMADA MOBIL TERSEDIA",
     cars_title: "Pilihan Armada Rajawali Trans",
-    cars_desc: "Tersedia unit kendaraan Avanza, Rush, Wuling, XL7, Calya & Sigra yang bersih dan terawat.",
+    cars_desc: "Tersedia unit kendaraan Avanza, Ertiga, Rush, Wuling, XL7, Calya & Sigra yang bersih dan terawat.",
     cars_seats: "Kursi",
     cars_transmission_auto: "Matic",
     cars_transmission_manual: "Manual",

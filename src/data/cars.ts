@@ -27,6 +27,31 @@ export const CARS: Car[] = [
     ]
   },
   {
+    id: 'ertiga',
+    name: 'Suzuki Ertiga',
+    nameAr: 'سوزوكي إرتيجا',
+    category: 'Family MPV',
+    pricePerDay: 600000,
+    priceDisplay: 'Travel PP 125rb/Org | Carter mulai 600rb',
+    image: '/ertiga.png',
+    seats: 7,
+    transmission: 'Manual/Matic',
+    fuel: 'Bensin (Irit & Nyaman)',
+    fuelAr: 'بنزين',
+    includeList: ['AC Double Blower', 'Kabin Nyaman & Senyap', 'Audio Bluetooth & USB', 'Suspensi Empuk Ergonomis', 'Driver Berpengalaman'],
+    includeListAr: ['مكيف', 'بلوتوث', 'سائق'],
+    description: 'MPV keluarga yang sangat nyaman dan irit dengan suspensi empuk, cocok untuk perjalanan Kefa - Kupang PP dengan rasa tenang.',
+    descriptionAr: 'سيارة عائلية مريحة واقتصادية للرحلات.',
+    rating: 4.9,
+    reviewsCount: 104,
+    specifications: [
+      { label: 'Kapasitas Penumpang', value: '7 Kursi Penumpang', labelAr: 'السعة', valueAr: '٧ ركاب' },
+      { label: 'Fasilitas Utama', value: 'Full AC Double Blower, Musikal Bluetooth, Power Outlet', labelAr: 'الميزات', valueAr: 'مكيف، بلوتوث' },
+      { label: 'Kondisi Unit', value: 'Selalu Bersih, Harum & Steril', labelAr: 'الحالة', valueAr: 'ممتازة' },
+      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter mulai 600rb', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
+    ]
+  },
+  {
     id: 'rush',
     name: 'Toyota Rush',
     nameAr: 'تويوتا راش',
