@@ -36,8 +36,6 @@ export default function Header({ activeSection, onNavClick, lang, setLang, curre
     { label: t.nav_about, id: 'about', type: 'page', pageId: 'about' },
     { label: 'Armada Mobil', id: 'cars', type: 'section', sectionId: 'cars' },
     { label: 'Rute & Tarif', id: 'services', type: 'section', sectionId: 'services' },
-    { label: 'Cara Pesan', id: 'steps', type: 'section', sectionId: 'steps' },
-    { label: 'Ulasan', id: 'testimonials', type: 'section', sectionId: 'testimonials' },
     { label: t.nav_contact, id: 'contact', type: 'section', sectionId: 'contact' },
   ];
 
@@ -115,7 +113,7 @@ export default function Header({ activeSection, onNavClick, lang, setLang, curre
             </div>
 
             {/* Desktop Nav Items */}
-            <nav className="hidden lg:flex items-center gap-6" id="desktop-nav">
+            <nav className="hidden lg:flex items-center gap-2" id="desktop-nav">
               {navItems.map((item) => {
                 const isItemActive = 
                   (item.type === 'page' && currentPage === item.pageId) ||
@@ -125,21 +123,14 @@ export default function Header({ activeSection, onNavClick, lang, setLang, curre
                   <button
                     key={item.id}
                     onClick={() => handleItemClick(item)}
-                    className={`font-display text-sm font-bold transition-colors cursor-pointer relative py-2 px-1 ${
+                    className={`font-sans text-xs font-extrabold uppercase tracking-wider transition-all duration-300 cursor-pointer relative px-3.5 py-1.5 rounded-full ${
                       isItemActive
-                        ? 'text-orange-600'
-                        : 'text-[#0f172a] hover:text-orange-600'
+                        ? 'text-orange-600 bg-orange-50 border border-orange-200/80 shadow-xs'
+                        : 'text-[#0f172a] hover:text-orange-600 hover:bg-slate-100/80'
                     }`}
                     id={`nav-link-${item.id}`}
                   >
                     {item.label}
-                    {isItemActive && (
-                      <motion.div
-                        layoutId="activeNavIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-600 rounded-full"
-                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                      />
-                    )}
                   </button>
                 );
               })}
@@ -148,9 +139,9 @@ export default function Header({ activeSection, onNavClick, lang, setLang, curre
                 href="https://api.whatsapp.com/send?phone=6281236313554&text=Halo%20Rajawali%20Trans,%20saya%20ingin%20tanya%20jadwal%20dan%20pemesanan%20rute%20Kefa%20-%20Kupang"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-sans font-bold text-xs uppercase px-5 py-3 rounded-xl shadow-md shadow-orange-500/20 transition-all cursor-pointer ml-2"
+                className="bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500 hover:from-orange-700 hover:to-amber-700 text-white font-sans font-extrabold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-md shadow-orange-500/25 transition-all duration-300 cursor-pointer ml-3 flex items-center gap-1.5 border border-orange-400/30 hover:scale-105"
               >
-                Pesan WA
+                <span>PESAN WA</span>
               </a>
             </nav>
 
