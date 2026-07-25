@@ -2,7 +2,7 @@ export const TRANSLATIONS = {
   ID: {
     // Navigation
     nav_home: "Beranda",
-    nav_about: "Visi & Misi",
+    nav_about: "Profil & Sejarah",
     nav_services: "Rute & Tarif",
     nav_cars: "Armada Mobil",
     nav_steps: "Cara Pesan",
@@ -20,13 +20,13 @@ export const TRANSLATIONS = {
     hero_cta_wa: "Pesan Tiket via WhatsApp",
     hero_cta_cars: "Lihat Rute & Tarif Mobil",
 
-    // About Section (Visi & Misi)
-    about_tag: "VISI & MISI KAMI",
+    // About Section (Profil & Sejarah)
+    about_tag: "PROFIL & SEJARAH PERUSAHAAN",
     about_title_1: "Pelayanan Berkualitas",
     about_title_2: "Keamanan & Kenyamanan Utama",
-    about_desc_1: "VISI: Menjadi penyedia Jasa unggul dan Aman yang berfokus pada kepuasan pelanggan melalui unit yang berkualitas dan pelayanan yang baik.",
-    about_desc_2: "MISI:\n1. Keamanan & Kenyamanan: Menyediakan unit kendaraan yang selalu bersih, terawat, aman, dan prima.\n2. Pelayanan: Komitmen setiap anggota untuk menjaga pelayanan yang berkualitas sehingga setiap pelanggan mendapatkan pengalaman perjalanan yang aman & nyaman.",
-    about_read_more: "Lihat Visi & Misi Lengkap",
+    about_desc_1: "PROFIL: Rajawali Trans lahir dari semangat kebersamaan dan komitmen layanan transportasi aman, nyaman & terpercaya di Kabupaten Timor Tengah Utara (TTU).",
+    about_desc_2: "SEJARAH: Bermula dari Rental Kasih, kami berkembang menjadi Rajawali Trans sebagai simbol keberanian, ketangguhan, ketepatan, dan visi perjalanan profesional.",
+    about_read_more: "Lihat Profil & Sejarah Lengkap",
     about_read_less: "Tutup Detail",
     about_badge: "RAJAWALI TRANS KEFA",
     about_card_tag: "Rajawali Trans",
@@ -135,7 +135,7 @@ export const TRANSLATIONS = {
   EN: {
     // Navigation
     nav_home: "Home",
-    nav_about: "Vision & Mission",
+    nav_about: "Profile & History",
     nav_services: "Routes & Rates",
     nav_cars: "Fleet",
     nav_steps: "How to Book",
@@ -154,12 +154,12 @@ export const TRANSLATIONS = {
     hero_cta_cars: "View Routes & Rates",
 
     // About Section
-    about_tag: "OUR VISION & MISSION",
+    about_tag: "COMPANY PROFILE & HISTORY",
     about_title_1: "Quality Service",
     about_title_2: "Safety & Comfort First",
-    about_desc_1: "VISION: To become a superior and safe service provider focusing on customer satisfaction through quality units and good service.",
-    about_desc_2: "MISSION:\n1. Safety & Comfort: Providing clean, well-maintained, safe, and prime condition vehicles.\n2. Service: Commitment of every team member to maintain high-quality service so every customer gets a safe & comfortable journey.",
-    about_read_more: "Read Full Vision & Mission",
+    about_desc_1: "PROFILE: Rajawali Trans was born from community spirit and commitment to safe & comfortable transportation in North Central Timor (TTU).",
+    about_desc_2: "HISTORY: Originating from Rental Kasih, we evolved into Rajawali Trans as a symbol of courage, resilience, precision, and professional travel.",
+    about_read_more: "Read Full Profile & History",
     about_read_less: "Close Details",
     about_badge: "RAJAWALI TRANS KEFA",
     about_card_tag: "Rajawali Trans",

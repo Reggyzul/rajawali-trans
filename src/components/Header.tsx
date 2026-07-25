@@ -33,7 +33,7 @@ export default function Header({ activeSection, onNavClick, lang, setLang, curre
 
   const navItems = [
     { label: t.nav_home, id: 'home', type: 'page', pageId: 'home' },
-    { label: 'Visi & Misi', id: 'about', type: 'page', pageId: 'about' },
+    { label: t.nav_about, id: 'about', type: 'page', pageId: 'about' },
     { label: 'Armada Mobil', id: 'cars', type: 'section', sectionId: 'cars' },
     { label: 'Rute & Tarif', id: 'services', type: 'section', sectionId: 'services' },
     { label: 'Cara Pesan', id: 'steps', type: 'section', sectionId: 'steps' },

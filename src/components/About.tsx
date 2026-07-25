@@ -194,7 +194,7 @@ export default function About({ lang }: AboutProps) {
 
         </div>
 
-        {/* CORE VISI & MISI STATEMENT CARD */}
+        {/* CORE PROFIL & SEJARAH STATEMENT CARD */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -209,11 +209,11 @@ export default function About({ lang }: AboutProps) {
                 <Award className="w-6 h-6" />
               </div>
               <div className="text-left">
-                <span className="font-display font-black text-base text-[#0f172a] uppercase tracking-tight block">
-                  STANDAR VISI & MISI OPERASIONAL
+                <span className="font-display font-black text-lg text-[#0f172a] uppercase tracking-tight block">
+                  PROFIL & SEJARAH PERUSAHAAN
                 </span>
                 <span className="text-[11px] font-bold text-orange-600 uppercase tracking-wider block mt-0.5">
-                  Sebagai Penyedia Layanan Rental & Travel Terpercaya
+                  Perjalanan Dedikasi Dari Rental Kasih Menuju Rajawali Trans
                 </span>
               </div>
             </div>
@@ -221,14 +221,56 @@ export default function About({ lang }: AboutProps) {
             <Quote className="w-8 h-8 text-orange-200 shrink-0 hidden sm:block" />
           </div>
 
-          {/* Statement Box */}
-          <div className="bg-gradient-to-br from-orange-50/50 via-slate-50/80 to-white border-l-4 border-orange-500 p-6 sm:p-8 rounded-r-2xl border-y border-r border-slate-200/80 shadow-inner relative">
-            <p className="font-sans text-base sm:text-[17px] text-slate-800 leading-[1.8] font-medium tracking-normal text-justify sm:text-left">
-              "Sebagai penyedia layanan rental mobil terpercaya di Kupang dan sekitarnya, kami menghadirkan armada yang terawat, pelayanan profesional, dan standar operasional yang mengutamakan keamanan, kenyamanan, serta kepuasan pelanggan. Setiap perjalanan didukung oleh layanan yang andal, efisien, dan berorientasi pada kualitas."
-            </p>
+          {/* 4-PARAGRAPH NARRATIVE STORYTIME BOX */}
+          <div className="space-y-6">
+            
+            {/* Paragraph 1 - Semangat Kebersamaan */}
+            <div className="bg-gradient-to-r from-orange-50/70 via-slate-50 to-white border-l-4 border-orange-500 p-5 sm:p-6 rounded-r-2xl border-y border-r border-slate-200/80 shadow-xs text-left space-y-2">
+              <div className="flex items-center gap-2 text-orange-600 font-display font-bold text-xs uppercase tracking-wider">
+                <HeartHandshake className="w-4 h-4" />
+                <span>1. Komitmen & Semangat Kebersamaan TTU</span>
+              </div>
+              <p className="font-sans text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+                Rajawali Trans merupakan perusahaan jasa transportasi yang lahir dari semangat kebersamaan dan komitmen untuk menghadirkan layanan transportasi yang aman, nyaman, dan terpercaya bagi masyarakat Kabupaten Timor Tengah Utara (TTU).
+              </p>
+            </div>
+
+            {/* Paragraph 2 - Fondasi Rental Kasih */}
+            <div className="bg-slate-50 border-l-4 border-slate-800 p-5 sm:p-6 rounded-r-2xl border-y border-r border-slate-200/80 shadow-xs text-left space-y-2">
+              <div className="flex items-center gap-2 text-slate-900 font-display font-bold text-xs uppercase tracking-wider">
+                <Compass className="w-4 h-4 text-orange-600" />
+                <span>2. Jejak Perjalanan Dari Rental Kasih</span>
+              </div>
+              <p className="font-sans text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+                Perjalanan kami bermula dari <strong className="text-slate-900 font-bold">Rental Kasih</strong>, sebuah usaha yang menjadi fondasi dalam membangun pengalaman, kepercayaan pelanggan, serta pemahaman akan kebutuhan transportasi masyarakat. Seiring waktu, melalui berbagai tantangan dan proses pembelajaran selama bertahun-tahun, lahirlah identitas baru sebagai <strong className="text-orange-600 font-bold">Rajawali Trans</strong> dengan komitmen untuk memberikan pelayanan yang lebih profesional dan berkualitas.
+              </p>
+            </div>
+
+            {/* Paragraph 3 - Filosofi Nama Rajawali */}
+            <div className="bg-gradient-to-r from-orange-50/70 via-amber-50/40 to-white border-l-4 border-orange-600 p-5 sm:p-6 rounded-r-2xl border-y border-r border-slate-200/80 shadow-xs text-left space-y-2">
+              <div className="flex items-center gap-2 text-orange-600 font-display font-bold text-xs uppercase tracking-wider">
+                <Zap className="w-4 h-4 fill-current" />
+                <span>3. Simbol Keberanian & Visi Masa Depan</span>
+              </div>
+              <p className="font-sans text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+                Nama <strong className="text-orange-600 font-bold">Rajawali</strong> dipilih sebagai simbol keberanian, ketangguhan, ketepatan, dan visi yang jauh ke depan. Nilai-nilai tersebut menjadi dasar dalam setiap langkah kami untuk terus berkembang, menjaga kepercayaan pelanggan, dan memberikan pelayanan terbaik dalam setiap perjalanan.
+              </p>
+            </div>
+
+            {/* Paragraph 4 - Komitmen Berkelanjutan */}
+            <div className="bg-slate-900 text-white p-5 sm:p-6 rounded-2xl border border-slate-800 shadow-lg text-left space-y-2">
+              <div className="flex items-center gap-2 text-orange-400 font-display font-bold text-xs uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4" />
+                <span>4. Komitmen Keamanan & Kepuasan Pelanggan</span>
+              </div>
+              <p className="font-sans text-sm sm:text-base text-slate-200 leading-relaxed font-medium">
+                Hingga saat ini, Rajawali Trans terus berkomitmen menjadi mitra transportasi yang mengutamakan keselamatan, kenyamanan, dan kepuasan pelanggan, serta memberikan kontribusi positif bagi kemajuan masyarakat Timor Tengah Utara.
+              </p>
+            </div>
+
           </div>
 
-          {/* 3 Precise Pillar Cards */}
+          {/* 3 Key Operational Value Badges */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 flex items-start gap-3 hover:border-orange-300 transition-colors text-left">
@@ -236,8 +278,8 @@ export default function About({ lang }: AboutProps) {
                 <ShieldCheck className="w-4.5 h-4.5" />
               </div>
               <div>
-                <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0f172a] block">Armada Terawat</span>
-                <span className="text-[11px] text-slate-600 font-medium block mt-0.5 leading-snug">Unit bersih, steril & selalu prima</span>
+                <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0f172a] block">Keselamatan Utama</span>
+                <span className="text-[11px] text-slate-600 font-medium block mt-0.5 leading-snug">Unit terawat & driver terlatih</span>
               </div>
             </div>
 
@@ -246,8 +288,8 @@ export default function About({ lang }: AboutProps) {
                 <HeartHandshake className="w-4.5 h-4.5" />
               </div>
               <div>
-                <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0f172a] block">Pelayanan Profesional</span>
-                <span className="text-[11px] text-slate-600 font-medium block mt-0.5 leading-snug">Driver ramah & berpengalaman</span>
+                <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0f172a] block">Kepercayaan Masyarakat</span>
+                <span className="text-[11px] text-slate-600 font-medium block mt-0.5 leading-snug">Layanan ramah & profesional</span>
               </div>
             </div>
 
@@ -256,8 +298,8 @@ export default function About({ lang }: AboutProps) {
                 <Sparkles className="w-4.5 h-4.5" />
               </div>
               <div>
-                <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0f172a] block">Berorientasi Kualitas</span>
-                <span className="text-[11px] text-slate-600 font-medium block mt-0.5 leading-snug">Perjalanan aman & efisien</span>
+                <span className="font-display font-bold text-xs uppercase tracking-wider text-[#0f172a] block">Kontribusi Bagi TTU</span>
+                <span className="text-[11px] text-slate-600 font-medium block mt-0.5 leading-snug">Memajukan transportasi lokal</span>
               </div>
             </div>
 

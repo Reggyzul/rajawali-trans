@@ -87,7 +87,7 @@ export default function Footer({ onNavClick, lang }: FooterProps) {
               </li>
               <li>
                 <button onClick={() => onNavClick('about')} className="hover:text-orange-400 transition-colors cursor-pointer text-left w-full">
-                  • Visi & Misi Kami
+                  • Profil & Sejarah Rajawali Trans
                 </button>
               </li>
               <li>

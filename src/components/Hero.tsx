@@ -122,9 +122,9 @@ export default function Hero({ onRentClick, onVisiMisiClick, lang }: HeroProps) 
             <button
               onClick={handleScrollToVisiMisi}
               className="group flex flex-col items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-orange-600 transition-colors cursor-pointer"
-              title="Lihat Visi & Misi"
+              title="Lihat Profil & Sejarah"
             >
-              <span className="text-[10px] uppercase tracking-wider font-extrabold text-orange-600">Visi & Misi</span>
+              <span className="text-[10px] uppercase tracking-wider font-extrabold text-orange-600">Profil & Sejarah</span>
               <div className="w-10 h-10 rounded-full bg-white border border-slate-200 shadow-md flex items-center justify-center text-orange-600 group-hover:border-orange-500 group-hover:bg-orange-50 transition-all">
                 <ChevronDown className="w-5 h-5" />
               </div>
