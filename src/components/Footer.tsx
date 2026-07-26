@@ -68,10 +68,10 @@ export default function Footer({ onNavClick, lang }: FooterProps) {
                   href="https://www.google.com/maps?q=-9.478111,124.484306" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="hover:text-orange-400 transition-colors underline decoration-orange-500/50 underline-offset-4"
-                  title="Buka Lokasi Google Maps: 9°28'41.2''S 124°29'03.5''E"
+                  className="hover:text-orange-400 transition-colors"
+                  title="Buka Lokasi Google Maps"
                 >
-                  Jln. El Tari KM 04 (Dekat Masjid), Kefamenanu, Kab. TTU, NTT <span className="text-orange-400 font-bold text-[11px] block mt-0.5">📌 Koordinat: 9°28'41.2"S 124°29'03.5"E</span>
+                  Jln. El Tari KM 04 (Dekat Masjid), Kefamenanu, Kab. Timor Tengah Utara, NTT
                 </a>
               </div>
               <div className="flex items-center gap-2">
