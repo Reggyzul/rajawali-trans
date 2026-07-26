@@ -25,7 +25,7 @@ export default function Footer({ onNavClick, lang }: FooterProps) {
               RAJAWALI TRANS KEFA
             </h3>
             <p className="font-sans text-sm text-slate-300">
-              Travel Reguler PP (Kefa - Kupang, Malaka, Atambua, TLS) & Carter Mobil Privat
+              Travel Reguler Kefa - Kupang PP & Carter Mobil Privat
             </p>
           </div>
           <div className="flex justify-start md:justify-end">
