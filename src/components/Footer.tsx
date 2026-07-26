@@ -64,7 +64,15 @@ export default function Footer({ onNavClick, lang }: FooterProps) {
             <div className="text-xs text-slate-300 font-sans space-y-2.5">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4.5 h-4.5 text-orange-400 shrink-0 mt-0.5" />
-                <span>Jln. El Tari KM 04 (Dekat Masjid), Kefamenanu, Kab. Timor Tengah Utara, NTT</span>
+                <a 
+                  href="https://www.google.com/maps?q=-9.478111,124.484306" 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="hover:text-orange-400 transition-colors underline decoration-orange-500/50 underline-offset-4"
+                  title="Buka Lokasi Google Maps: 9°28'41.2''S 124°29'03.5''E"
+                >
+                  Jln. El Tari KM 04 (Dekat Masjid), Kefamenanu, Kab. TTU, NTT <span className="text-orange-400 font-bold text-[11px] block mt-0.5">📌 Koordinat: 9°28'41.2"S 124°29'03.5"E</span>
+                </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4.5 h-4.5 text-orange-400 shrink-0" />
@@ -92,12 +100,12 @@ export default function Footer({ onNavClick, lang }: FooterProps) {
               </li>
               <li>
                 <button onClick={() => onNavClick('services')} className="hover:text-orange-400 transition-colors cursor-pointer text-left w-full">
-                  • Rute Kefa - Kupang & Tarif
+                  • Rute & Layanan Travel
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavClick('cars')} className="hover:text-orange-400 transition-colors cursor-pointer text-left w-full">
-                  • Armada Mobil (Avanza, Rush, XL7, dll)
+                  • Armada Mobil (Avanza, Ertiga, Rush, XL7, dll)
                 </button>
               </li>
             </ul>
@@ -121,19 +129,28 @@ export default function Footer({ onNavClick, lang }: FooterProps) {
               </div>
             </div>
 
-            {/* Google Map Embed */}
+            {/* Google Map Embed (Exact Coordinates: 9°28'41.2"S 124°29'03.5"E) */}
             <div className="pt-2">
-              <div className="rounded-2xl overflow-hidden border border-slate-800 shadow-lg w-full h-36 bg-slate-900">
+              <div className="rounded-2xl overflow-hidden border border-slate-700 shadow-xl w-full h-44 bg-slate-900 relative group">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15764.123456789!2d124.475!3d-9.445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2cff829999999999%3A0x123456789!2sKefamenanu%2C%20Timor%20Tengah%20Utara!5e0!3m2!1sid!2sid!4v1689999999999!5m2!1sid!2sid"
+                  src="https://maps.google.com/maps?q=-9.478111,124.484306&hl=id&z=17&output=embed"
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
                   allowFullScreen={true}
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Rajawali Trans Kefamenanu Location Map"
+                  title="Lokasi Rajawali Trans Kefamenanu (9°28'41.2''S 124°29'03.5''E)"
                 ></iframe>
+                <a 
+                  href="https://www.google.com/maps?q=-9.478111,124.484306"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="absolute bottom-2.5 right-2.5 bg-orange-600 hover:bg-orange-700 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-xl shadow-lg flex items-center gap-1.5 transition-all border border-white/20"
+                >
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>Buka Google Maps</span>
+                </a>
               </div>
             </div>
 
