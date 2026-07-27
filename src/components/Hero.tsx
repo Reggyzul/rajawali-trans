@@ -67,7 +67,7 @@ export default function Hero({ onRentClick, onVisiMisiClick, lang }: HeroProps) 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 sm:p-5 rounded-3xl bg-white border border-slate-200/90 w-full max-w-2xl shadow-xl shadow-slate-200/50"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-4 sm:p-5 rounded-3xl bg-white border border-slate-200/90 w-full max-w-3xl shadow-xl shadow-slate-200/50"
           >
             <div className="p-3.5 rounded-2xl bg-orange-50/80 border border-orange-100 text-center">
               <span className="text-[10px] font-bold uppercase tracking-wider text-orange-700 block">Kefa ➔ Kupang</span>
@@ -76,6 +76,10 @@ export default function Hero({ onRentClick, onVisiMisiClick, lang }: HeroProps) 
             <div className="p-3.5 rounded-2xl bg-orange-50/80 border border-orange-100 text-center">
               <span className="text-[10px] font-bold uppercase tracking-wider text-orange-700 block">Kupang ➔ Kefa</span>
               <span className="font-display font-black text-base text-[#0f172a] block mt-0.5">Rp 125.000 <span className="text-[11px] font-medium text-slate-500">/org</span></span>
+            </div>
+            <div className="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-100 text-center">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 block">Lepas Kunci (Kefamenanu, Kab. TTU)</span>
+              <span className="font-display font-black text-base text-[#0f172a] block mt-0.5">Rp 400.000 <span className="text-[11px] font-medium text-slate-500">/hari</span></span>
             </div>
             <div className="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-100 text-center">
               <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block">Carter Privat</span>

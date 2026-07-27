@@ -40,6 +40,17 @@ export default function Services({ lang }: ServicesProps) {
       features: ['Penjemputan Tepat Waktu', 'Tempat Duduk Nyaman', 'Driver Ramah & Sopan']
     },
     {
+      id: 'lepas-kunci',
+      title: 'Sewa Mobil Lepas Kunci',
+      subtitle: 'Lokasi Kefamenanu, Kab. Timor Tengah Utara',
+      price: 'Rp 400.000',
+      unitPrice: '/ hari',
+      badge: 'Lepas Kunci',
+      badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
+      description: 'Layanan sewa mobil lepas kunci khusus lokasi Kefamenanu, Kab. Timor Tengah Utara (TTU). Unit terawat, bersih, & prima.',
+      features: ['Lokasi Kefamenanu (Kab. TTU)', 'Unit Prima, Bersih & Ber-AC', 'Proses Persyaratan Mudah']
+    },
+    {
       id: 'charter-drop',
       title: 'Carter Mobil Privat',
       subtitle: 'Perjalanan Bebas Rombongan / Keluarga',
@@ -72,7 +83,7 @@ export default function Services({ lang }: ServicesProps) {
           </h2>
 
           <p className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
-            Tarif hemat & transparan untuk travel penumpang reguler PP Kefa - Kupang maupun sewa carter privat.
+            Tarif hemat & transparan untuk travel penumpang reguler PP Kefa - Kupang, sewa lepas kunci Kefamenanu, maupun carter privat.
           </p>
 
           {/* Highlight DP Banner */}
@@ -82,8 +93,8 @@ export default function Services({ lang }: ServicesProps) {
           </div>
         </div>
 
-        {/* 3 Routes Grid Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* 4 Routes Grid Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {routes.map((item, index) => (
             <motion.div
               initial={{ opacity: 0, y: 25 }}

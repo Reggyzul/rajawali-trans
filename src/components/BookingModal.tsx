@@ -13,7 +13,7 @@ interface BookingModalProps {
 }
 
 export default function BookingModal({ car, onClose, lang, onCarChange }: BookingModalProps) {
-  const [serviceType, setServiceType] = useState<'kefa_kupang' | 'kupang_kefa' | 'carter'>('kefa_kupang');
+  const [serviceType, setServiceType] = useState<'kefa_kupang' | 'kupang_kefa' | 'lepas_kunci' | 'carter'>('kefa_kupang');
   const [selectedCarId, setSelectedCarId] = useState<string>(car?.id || 'avanza');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -50,6 +50,7 @@ export default function BookingModal({ car, onClose, lang, onCarChange }: Bookin
 
     let serviceTitle = 'Travel Kefa ➔ Kupang (Rp 125.000/org)';
     if (serviceType === 'kupang_kefa') serviceTitle = 'Travel Kupang ➔ Kefa (Rp 125.000/org)';
+    if (serviceType === 'lepas_kunci') serviceTitle = 'Sewa Mobil Lepas Kunci Kefamenanu Kab. TTU (Rp 400.000/hari)';
     if (serviceType === 'carter') serviceTitle = 'Sewa Carter Privat 1 Mobil (Mulai Rp 600.000)';
 
     let dpText = 'DP Minimal Rp 50.000 (Tanda Jadi Official)';
@@ -200,7 +201,7 @@ Mohon konfirmasi jadwal & ketersediaan tempat. Terima kasih!`;
                     1. PILIH LAYANAN RUTE & ARMADA
                   </span>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
                     <button
                       type="button"
                       onClick={() => setServiceType('kefa_kupang')}
@@ -227,6 +228,20 @@ Mohon konfirmasi jadwal & ketersediaan tempat. Terima kasih!`;
                       <span className="text-[10px] uppercase font-bold tracking-wider block text-orange-600">Travel Reguler</span>
                       <span className="text-xs font-bold block mt-0.5">Kupang ➔ Kefa</span>
                       <span className="text-[11px] font-black text-slate-900 block">Rp 125.000 /org</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setServiceType('lepas_kunci')}
+                      className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
+                        serviceType === 'lepas_kunci'
+                          ? 'border-blue-500 bg-blue-50/70 text-blue-950 font-bold shadow-xs'
+                          : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-medium'
+                      }`}
+                    >
+                      <span className="text-[10px] uppercase font-bold tracking-wider block text-blue-600">Sewa Mobil</span>
+                      <span className="text-xs font-bold block mt-0.5">Lepas Kunci (TTU)</span>
+                      <span className="text-[11px] font-black text-slate-900 block">Rp 400.000 /hari</span>
                     </button>
 
                     <button
