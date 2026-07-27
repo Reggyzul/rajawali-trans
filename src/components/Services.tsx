@@ -47,8 +47,8 @@ export default function Services({ lang }: ServicesProps) {
       unitPrice: '/ hari',
       badge: 'Lepas Kunci',
       badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
-      description: 'Layanan sewa mobil lepas kunci khusus lokasi Kefamenanu, Kab. Timor Tengah Utara (TTU). Unit terawat, bersih, & prima.',
-      features: ['Lokasi Kefamenanu (Kab. TTU)', 'Unit Prima, Bersih & Ber-AC', 'Proses Persyaratan Mudah']
+      description: 'Layanan sewa mobil lepas kunci khusus lokasi Kefamenanu, Kab. Timor Tengah Utara (TTU). Unit terawat, bersih, & prima. Bensin ditanggung oleh pemakai.',
+      features: ['Lokasi Kefamenanu (Kab. TTU)', 'Bensin Ditanggung Pemakai', 'Unit Prima, Bersih & Ber-AC', 'Proses Persyaratan Mudah']
     },
     {
       id: 'charter-drop',

@@ -50,7 +50,7 @@ export default function BookingModal({ car, onClose, lang, onCarChange }: Bookin
 
     let serviceTitle = 'Travel Kefa ➔ Kupang (Rp 125.000/org)';
     if (serviceType === 'kupang_kefa') serviceTitle = 'Travel Kupang ➔ Kefa (Rp 125.000/org)';
-    if (serviceType === 'lepas_kunci') serviceTitle = 'Sewa Mobil Lepas Kunci Kefamenanu Kab. TTU (Rp 400.000/hari)';
+    if (serviceType === 'lepas_kunci') serviceTitle = 'Sewa Mobil Lepas Kunci Kefamenanu Kab. TTU (Rp 400.000/hari - Bensin Ditanggung Pemakai)';
     if (serviceType === 'carter') serviceTitle = 'Sewa Carter Privat 1 Mobil (Mulai Rp 600.000)';
 
     let dpText = 'DP Minimal Rp 50.000 (Tanda Jadi Official)';
@@ -242,6 +242,7 @@ Mohon konfirmasi jadwal & ketersediaan tempat. Terima kasih!`;
                       <span className="text-[10px] uppercase font-bold tracking-wider block text-blue-600">Sewa Mobil</span>
                       <span className="text-xs font-bold block mt-0.5">Lepas Kunci (TTU)</span>
                       <span className="text-[11px] font-black text-slate-900 block">Rp 400.000 /hari</span>
+                      <span className="text-[9px] font-semibold text-blue-900/70 block mt-0.5">*Bensin ditanggung pemakai</span>
                     </button>
 
                     <button

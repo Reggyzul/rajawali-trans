@@ -80,6 +80,7 @@ export default function Hero({ onRentClick, onVisiMisiClick, lang }: HeroProps) 
             <div className="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-100 text-center">
               <span className="text-[10px] font-bold uppercase tracking-wider text-blue-700 block">Lepas Kunci (Kefamenanu, Kab. TTU)</span>
               <span className="font-display font-black text-base text-[#0f172a] block mt-0.5">Rp 400.000 <span className="text-[11px] font-medium text-slate-500">/hari</span></span>
+              <span className="text-[9px] font-bold text-blue-900/70 block mt-0.5">*Bensin Ditanggung Pemakai</span>
             </div>
             <div className="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-100 text-center">
               <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block">Carter Privat</span>
