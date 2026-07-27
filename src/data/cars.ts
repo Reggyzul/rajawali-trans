@@ -6,8 +6,8 @@ export const CARS: Car[] = [
     name: 'Toyota Avanza',
     nameAr: 'تويوتا أفانزا',
     category: 'Family MPV',
-    pricePerDay: 600000,
-    priceDisplay: 'Travel PP 125rb/Org | Carter mulai 600rb',
+    pricePerDay: 650000,
+    priceDisplay: 'Travel PP 125rb/Org | Carter 650rb (tergantung rute)',
     image: '/avanza.avif',
     seats: 7,
     transmission: 'Manual/Matic',
@@ -23,7 +23,7 @@ export const CARS: Car[] = [
       { label: 'Kapasitas Penumpang', value: '7 Kursi Penumpang', labelAr: 'السعة', valueAr: '٧ ركاب' },
       { label: 'Fasilitas Utama', value: 'Full AC Double Blower, Musikal Bluetooth, Charger HP', labelAr: 'الميزات', valueAr: 'مكيف، بلوتوث' },
       { label: 'Kondisi Unit', value: 'Selalu Bersih, Harum & Steril', labelAr: 'الحالة', valueAr: 'ممتازة' },
-      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter mulai 600rb', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
+      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter 650rb (tergantung rute)', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
     ]
   },
   {
@@ -31,8 +31,8 @@ export const CARS: Car[] = [
     name: 'Suzuki Ertiga',
     nameAr: 'سوزوكي إرتيجا',
     category: 'Family MPV',
-    pricePerDay: 600000,
-    priceDisplay: 'Travel PP 125rb/Org | Carter mulai 600rb',
+    pricePerDay: 650000,
+    priceDisplay: 'Travel PP 125rb/Org | Carter 650rb (tergantung rute)',
     image: '/ertiga.png',
     seats: 7,
     transmission: 'Manual/Matic',
@@ -48,7 +48,7 @@ export const CARS: Car[] = [
       { label: 'Kapasitas Penumpang', value: '7 Kursi Penumpang', labelAr: 'السعة', valueAr: '٧ ركاب' },
       { label: 'Fasilitas Utama', value: 'Full AC Double Blower, Musikal Bluetooth, Power Outlet', labelAr: 'الميزات', valueAr: 'مكيف، بلوتوث' },
       { label: 'Kondisi Unit', value: 'Selalu Bersih, Harum & Steril', labelAr: 'الحالة', valueAr: 'ممتازة' },
-      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter mulai 600rb', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
+      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter 650rb (tergantung rute)', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
     ]
   },
   {
@@ -56,8 +56,8 @@ export const CARS: Car[] = [
     name: 'Toyota Rush',
     nameAr: 'تويوتا راش',
     category: 'Compact SUV',
-    pricePerDay: 600000,
-    priceDisplay: 'Travel PP 125rb/Org | Carter mulai 600rb',
+    pricePerDay: 650000,
+    priceDisplay: 'Travel PP 125rb/Org | Carter 650rb (tergantung rute)',
     image: '/rush.jpg',
     seats: 7,
     transmission: 'Manual/Matic',
@@ -73,7 +73,7 @@ export const CARS: Car[] = [
       { label: 'Kapasitas Penumpang', value: '7 Kursi Penumpang', labelAr: 'السعة', valueAr: '٧ ركاب' },
       { label: 'Fasilitas Utama', value: 'AC Digital Multi-Zone, Audio Touchscreen, USB Charging Port', labelAr: 'الميزات', valueAr: 'مكيف، شاشة' },
       { label: 'Kondisi Unit', value: 'Unit Prima & Pengecekan Rutin', labelAr: 'الحالة', valueAr: 'ممتازة' },
-      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter mulai 600rb', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
+      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter 650rb (tergantung rute)', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
     ]
   },
   {
@@ -81,8 +81,8 @@ export const CARS: Car[] = [
     name: 'Wuling Confero',
     nameAr: 'وولينج كونفيرو',
     category: 'Spacious MPV',
-    pricePerDay: 600000,
-    priceDisplay: 'Travel PP 125rb/Org | Carter mulai 600rb',
+    pricePerDay: 650000,
+    priceDisplay: 'Travel PP 125rb/Org | Carter 650rb (tergantung rute)',
     image: '/wuling.png',
     seats: 8,
     transmission: 'Manual',
@@ -98,7 +98,7 @@ export const CARS: Car[] = [
       { label: 'Kapasitas Penumpang', value: '8 Kursi Penumpang', labelAr: 'السعة', valueAr: '٨ ركاب' },
       { label: 'Fasilitas Utama', value: 'AC Double Blower, Legroom Ekstra Luas, USB Charger', labelAr: 'الميزات', valueAr: 'مكيف، شاحن' },
       { label: 'Kondisi Unit', value: 'Kabin Bersih & Performa Mesin Prima', labelAr: 'الحالة', valueAr: 'ممتازة' },
-      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter mulai 600rb', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
+      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter 650rb (tergantung rute)', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
     ]
   },
   {
@@ -106,8 +106,8 @@ export const CARS: Car[] = [
     name: 'Suzuki XL7',
     nameAr: 'سوزوكي إكس إل ٧',
     category: 'Crossover MPV',
-    pricePerDay: 600000,
-    priceDisplay: 'Travel PP 125rb/Org | Carter mulai 600rb',
+    pricePerDay: 650000,
+    priceDisplay: 'Travel PP 125rb/Org | Carter 650rb (tergantung rute)',
     image: '/xl7.png',
     seats: 7,
     transmission: 'Manual/Matic',
@@ -123,7 +123,7 @@ export const CARS: Car[] = [
       { label: 'Kapasitas Penumpang', value: '7 Kursi Penumpang', labelAr: 'السعة', valueAr: '٧ ركاب' },
       { label: 'Fasilitas Utama', value: 'AC Auto Climate Control, Touchscreen Display, Power Outlet', labelAr: 'الميزات', valueAr: 'مكيف، شاشة' },
       { label: 'Kondisi Unit', value: 'Unit Baru, Bersih & Steril', labelAr: 'الحالة', valueAr: 'جديدة' },
-      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter mulai 600rb', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
+      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter 650rb (tergantung rute)', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
     ]
   },
   {
@@ -131,8 +131,8 @@ export const CARS: Car[] = [
     name: 'Toyota Calya',
     nameAr: 'تويوتا كاليا',
     category: 'Economical MPV',
-    pricePerDay: 600000,
-    priceDisplay: 'Travel PP 125rb/Org | Carter mulai 600rb',
+    pricePerDay: 650000,
+    priceDisplay: 'Travel PP 125rb/Org | Carter 650rb (tergantung rute)',
     image: '/calya.png',
     seats: 7,
     transmission: 'Manual/Matic',
@@ -148,7 +148,7 @@ export const CARS: Car[] = [
       { label: 'Kapasitas Penumpang', value: '7 Kursi Penumpang', labelAr: 'السعة', valueAr: '٧ ركاب' },
       { label: 'Fasilitas Utama', value: 'AC Rear Air Circulator, Audio Bluetooth, Charger', labelAr: 'الميزات', valueAr: 'مكيف، بلوتوث' },
       { label: 'Kondisi Unit', value: 'Selalu Terawat & Siap Jalan', labelAr: 'الحالة', valueAr: 'ممتازة' },
-      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter mulai 600rb', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
+      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter 650rb (tergantung rute)', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
     ]
   },
   {
@@ -156,8 +156,8 @@ export const CARS: Car[] = [
     name: 'Daihatsu Sigra',
     nameAr: 'دايهاتسو سيجرا',
     category: 'Economical MPV',
-    pricePerDay: 600000,
-    priceDisplay: 'Travel PP 125rb/Org | Carter mulai 600rb',
+    pricePerDay: 650000,
+    priceDisplay: 'Travel PP 125rb/Org | Carter 650rb (tergantung rute)',
     image: '/sigra.png',
     seats: 7,
     transmission: 'Manual/Matic',
@@ -173,7 +173,7 @@ export const CARS: Car[] = [
       { label: 'Kapasitas Penumpang', value: '7 Kursi Penumpang', labelAr: 'السعة', valueAr: '٧ ركاب' },
       { label: 'Fasilitas Utama', value: 'AC Air Circulator, System Audio, Safety Belt Lengkap', labelAr: 'الميزات', valueAr: 'مكيف، أمان' },
       { label: 'Kondisi Unit', value: 'Kabin Steril & Rutin Servis', labelAr: 'الحالة', valueAr: 'ممتازة' },
-      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter mulai 600rb', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
+      { label: 'Tarif Keberangkatan', value: 'Travel PP 125rb/org | Carter 650rb (tergantung rute)', labelAr: 'الأجرة', valueAr: '١٢٥ ألف' }
     ]
   }
 ];

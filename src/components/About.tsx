@@ -265,7 +265,7 @@ export default function About({ lang }: AboutProps) {
                     4. Transparansi & Kepercayaan Jangka Panjang
                   </strong>
                   <p className="font-sans text-xs sm:text-sm text-slate-600 leading-relaxed font-medium mt-1">
-                    Memberikan penawaran harga yang transparan dan jujur (Travel PP Rp 125.000 / Carter Rp 650.000) tanpa biaya tersembunyi demi menjaga kepercayaan masyarakat TTU.
+                    Memberikan penawaran harga yang transparan dan jujur (Travel PP Rp 125.000 / Carter Rp 650.000 tergantung rute) tanpa biaya tersembunyi demi menjaga kepercayaan masyarakat TTU.
                   </p>
                 </div>
               </div>

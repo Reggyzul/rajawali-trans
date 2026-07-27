@@ -51,7 +51,7 @@ export default function BookingModal({ car, onClose, lang, onCarChange }: Bookin
     let serviceTitle = 'Travel Kefa ➔ Kupang (Rp 125.000/org)';
     if (serviceType === 'kupang_kefa') serviceTitle = 'Travel Kupang ➔ Kefa (Rp 125.000/org)';
     if (serviceType === 'lepas_kunci') serviceTitle = 'Sewa Mobil Lepas Kunci Kefamenanu Kab. TTU (Rp 400.000/hari - Bensin Ditanggung Pemakai)';
-    if (serviceType === 'carter') serviceTitle = 'Sewa Carter Privat 1 Mobil (Mulai Rp 600.000)';
+    if (serviceType === 'carter') serviceTitle = 'Sewa Carter Privat 1 Mobil (Rp 650.000 - tergantung rute)';
 
     let dpText = 'DP Minimal Rp 50.000 (Tanda Jadi Official)';
     if (dpOption === 'dp100') dpText = 'DP Rp 100.000 (Tanda Jadi)';
@@ -121,7 +121,7 @@ Mohon konfirmasi jadwal & ketersediaan tempat. Terima kasih!`;
                   {currentSelectedCar.name}
                 </h3>
                 <p className="font-sans text-xs text-orange-400 font-bold mt-0.5">
-                  {currentSelectedCar.priceDisplay || 'Travel PP 125rb/Org | Carter mulai 600rb'}
+                  {currentSelectedCar.priceDisplay || 'Travel PP 125rb/Org | Carter 650rb (tergantung rute)'}
                 </p>
               </div>
 
@@ -256,7 +256,8 @@ Mohon konfirmasi jadwal & ketersediaan tempat. Terima kasih!`;
                     >
                       <span className="text-[10px] uppercase font-bold tracking-wider block text-emerald-600">Privat Rombongan</span>
                       <span className="text-xs font-bold block mt-0.5">Carter 1 Mobil</span>
-                      <span className="text-[11px] font-black text-slate-900 block">Mulai Rp 600.000</span>
+                      <span className="text-[11px] font-black text-slate-900 block">Rp 650.000</span>
+                      <span className="text-[9px] font-semibold text-emerald-900/70 block mt-0.5">*Tergantung rute</span>
                     </button>
                   </div>
 

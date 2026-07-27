@@ -84,7 +84,7 @@ export default function Hero({ onRentClick, onVisiMisiClick, lang }: HeroProps) 
             </div>
             <div className="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-100 text-center">
               <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block">Carter Privat</span>
-              <span className="font-display font-black text-base text-[#0f172a] block mt-0.5">Mulai Rp 600.000</span>
+              <span className="font-display font-black text-base text-[#0f172a] block mt-0.5">Rp 650.000 <span className="text-[11px] font-medium text-slate-500">(tergantung rute)</span></span>
             </div>
           </motion.div>
 
