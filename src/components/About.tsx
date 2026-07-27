@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ShieldCheck, Sparkles, CheckCircle2, Compass, Award, HeartHandshake, Quote, Eye, Zap, Shield, Target } from 'lucide-react';
+import { ShieldCheck, Sparkles, CheckCircle2, Compass, Award, HeartHandshake, Quote, Eye, Zap, Shield, Target, User, Car, PhoneCall } from 'lucide-react';
 import { TRANSLATIONS } from '../utils/translations';
 
 interface AboutProps {
@@ -49,8 +49,9 @@ export default function About({ lang }: AboutProps) {
           </motion.p>
         </div>
 
-        {/* 1. PROFIL & SEJARAH PERUSAHAAN (PALING ATAS - DENGAN FOTO EMPOS TEFA KETUA DI SEBELAH KIRI) */}
+        {/* 1. TENTANG PERUSAHAAN & PROFIL SEJARAH */}
         <motion.div
+          id="tentang-perusahaan"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -177,8 +178,9 @@ export default function About({ lang }: AboutProps) {
 
         </motion.div>
 
-        {/* 2. VISI & MISI PERUSAHAAN (DILANJUTKAN DI BAWAHNYA) */}
+        {/* 2. VISI & MISI PERUSAHAAN */}
         <motion.div
+          id="visi-misi"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -271,6 +273,81 @@ export default function About({ lang }: AboutProps) {
             </div>
           </div>
 
+        </motion.div>
+
+        {/* 3. STRUKTUR ORGANISASI PERUSAHAAN */}
+        <motion.div
+          id="struktur-organisasi"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.12 }}
+          className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden space-y-8 text-left"
+        >
+          <div className="border-b border-slate-100 pb-5">
+            <span className="font-['Great_Vibes'] text-3xl sm:text-4xl text-orange-500 font-normal block leading-tight">
+              Organization Structure
+            </span>
+            <h3 className="font-display font-black text-2xl sm:text-3xl text-[#0f172a] uppercase tracking-tight">
+              Struktur Organisasi <span className="text-orange-600">Rajawali Trans</span>
+            </h3>
+            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">
+              Manajerial & Tim Operasional Transportasi
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Box 1: Pimpinan / Ketua */}
+            <div className="p-6 rounded-3xl bg-slate-900 text-white border border-slate-800 flex flex-col justify-between space-y-4 shadow-lg group hover:border-orange-500/50 transition-all">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-orange-600 flex items-center justify-center text-white font-extrabold shadow-md">
+                  <User className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-extrabold text-orange-400 uppercase tracking-widest block">KETUA PERUSAHAAN</span>
+                  <h4 className="font-display font-black text-xl text-white uppercase mt-0.5">EMPOS TEFA</h4>
+                  <p className="text-xs text-slate-300 font-medium mt-1">Penanggung Jawab Utama, Strategi & Komitmen Mutu Layanan</p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-white/10 text-[11px] font-bold text-orange-400">
+                ★ Kepemimpinan & Visi
+              </div>
+            </div>
+
+            {/* Box 2: Operasional & Driver */}
+            <div className="p-6 rounded-3xl bg-slate-50 text-slate-800 border border-slate-200/80 flex flex-col justify-between space-y-4 shadow-md group hover:border-orange-300 transition-all">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-600 border border-orange-200 flex items-center justify-center font-extrabold shadow-sm">
+                  <Car className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-extrabold text-orange-600 uppercase tracking-widest block">DIVISI OPERASIONAL</span>
+                  <h4 className="font-display font-black text-xl text-[#0f172a] uppercase mt-0.5">TIM DRIVER & ARMADA</h4>
+                  <p className="text-xs text-slate-600 font-medium mt-1">Pengemudi Berpengalaman, Perawatan Unit & Penjemputan Tepat Waktu</p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-slate-200/80 text-[11px] font-bold text-slate-600">
+                ✓ Sopan, Jujur & Steril
+              </div>
+            </div>
+
+            {/* Box 3: Layanan & Customer Service */}
+            <div className="p-6 rounded-3xl bg-slate-50 text-slate-800 border border-slate-200/80 flex flex-col justify-between space-y-4 shadow-md group hover:border-orange-300 transition-all">
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 border border-emerald-200 flex items-center justify-center font-extrabold shadow-sm">
+                  <PhoneCall className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-extrabold text-emerald-600 uppercase tracking-widest block">DIVISI RESERVASI</span>
+                  <h4 className="font-display font-black text-xl text-[#0f172a] uppercase mt-0.5">ADMIN & CUSTOMER CARE</h4>
+                  <p className="text-xs text-slate-600 font-medium mt-1">Layanan Informasi 24 Jam, Penjadwalan & Konfirmasi Tiket WA</p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-slate-200/80 text-[11px] font-bold text-emerald-700">
+                ✓ Fast Response 24 Jam
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* 3. FILOSOFI RAJAWALI (SECTION BAWAH) */}
