@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import DirgahayuSection from './components/DirgahayuSection';
 import About from './components/About';
 import CarList from './components/CarList';
 import Services from './components/Services';
@@ -135,7 +136,10 @@ export default function App() {
             {/* 1. Hero Section Banner */}
             <Hero onRentClick={() => handleNavClick('rentals')} onVisiMisiClick={() => handleNavClick('about')} lang={lang} />
 
-            {/* 2. Armada Mobil Tampil Berjejer */}
+            {/* 2. Special Independence Day (Dirgahayu RI) Section */}
+            <DirgahayuSection lang={lang} onBookingClick={() => setSelectedCar(CARS[0])} />
+
+            {/* 3. Armada Mobil Tampil Berjejer */}
             <CarList onSelectCar={handleSelectCar} lang={lang} />
 
             {/* 3. Section: Rute & Tarif (Kefa - Kupang PP & Carter) */}
